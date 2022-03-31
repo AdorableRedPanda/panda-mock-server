@@ -1,0 +1,23 @@
+{
+  "name": "panda-mock-server",
+  "version": "1.0.0",
+  "description": "simple app to mock requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdorableRedPanda/panda-mock-server.git"
+  },
+  "keywords": [
+    "mocks",
+    "mock-server"
+  ],
+  "author": "AdorableRedPanda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdorableRedPanda/panda-mock-server/issues"
+  },
+  "homepage": "https://github.com/AdorableRedPanda/panda-mock-server#readme"
+}
