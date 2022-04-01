@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {AppRoutes} from "../../../constants";
 
 export const Navigation: React.FC = () => (
-    <ul>
+    <ul className="navigation">
         <li>
             <NavLink to={AppRoutes.Logs}>Logs</NavLink>
         </li>

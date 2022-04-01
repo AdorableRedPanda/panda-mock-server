@@ -1,0 +1,13 @@
+.navigation {
+  color: #fefdff;
+  background: #24292f;
+  display: flex;
+  padding: 10px 20px;
+  gap: 10px;
+
+  list-style: none;
+
+  a {
+    color: inherit;
+  }
+}

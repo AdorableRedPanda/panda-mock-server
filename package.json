@@ -37,7 +37,11 @@
     "html-webpack-plugin": "5.5.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-router-dom": "6.3.0"
+    "react-router-dom": "6.3.0",
+    "sass": "1.49.10",
+    "sass-loader": "12.6.0",
+    "css-loader": "6.7.1",
+    "style-loader": "3.3.1"
   },
   "devDependencies": {
     "@types/react-dom": "17.0.14",
