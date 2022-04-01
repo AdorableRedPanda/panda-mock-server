@@ -1,0 +1,32 @@
+const path = require('path');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
+
+dotenv.config({ path: './.env' });
+
+module.exports = {
+	mode: 'development',
+	target: 'node',
+	entry: ['./server/index.ts'],
+	output: {
+		filename: 'mock-server.js',
+		path: path.resolve(__dirname, '../dist')
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(ts)$/,
+				use: 'babel-loader',
+				exclude: /node_modules/
+			},
+		]
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			"process.env.APP_PORT": JSON.stringify(process.env.APP_PORT)
+		}),
+	],
+	resolve: {
+		extensions: ['.ts', '.js'],
+	}
+}

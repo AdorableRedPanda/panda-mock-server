@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es5",
+    "lib": ["dom", "es2019"],
+    "jsx": "react",
+    "outDir": "./dist/",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "keyofStringsOnly": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "moduleResolution": "Node"
+  },
+  "types": [
+    "chrome"
+  ],
+  "typeAcquisition": {
+    "enable": false
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./client",
+    "./server"
+  ]
+}
