@@ -1,0 +1,1 @@
+export {initializeSettingsApp} from './initializeSettingsApp';

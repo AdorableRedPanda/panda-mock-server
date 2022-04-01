@@ -16,7 +16,11 @@
       }
     }
   },
+  "extends": [
+    "plugin:import/recommended"
+  ],
   "plugins": [
+    "@typescript-eslint/eslint-plugin",
     "@typescript-eslint",
     "import"
   ],
@@ -36,7 +40,7 @@
     "no-unneeded-ternary": "error",
     "prefer-arrow-callback": "error",
     "arrow-body-style": "warn",
-    "semi": ["error", "always"],
+    "semi": ["error", "never"],
     "comma-spacing": "error",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/prefer-includes": "error",
