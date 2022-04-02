@@ -1,8 +1,10 @@
 import { WsMessage } from '../types';
 import { WsMessageType } from '../types/WsMessageType';
 
+const WsMessageTypes: WsMessageType[] = ['logs', 'test_message', 'mock_update'];
+
 const isWsMessageType = (type: unknown): type is WsMessageType => (
-    typeof type === 'string' && (type === 'log' || type === 'mockUpdate')
+    typeof type === 'string' && WsMessageTypes.includes(type as WsMessageType)
 );
 
 const isWsMessage = (value: unknown): value is WsMessage<unknown> => {
@@ -25,6 +27,6 @@ const parse = <T>(str: string): WsMessage<T> => {
     return parsed as WsMessage<T>;
 };
 
-const build = <T>(type: WsMessageType, body:T): WsMessage<T> => ({ type, body });
+const buildMessageStr = <T>(type: WsMessageType, body:T): string => JSON.stringify({ type, body });
 
-export const WsMessageUtils = { build, parse };
+export const WsMessageUtils = { buildMessageStr, parse };

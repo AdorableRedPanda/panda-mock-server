@@ -1,48 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { StoreContext } from './constants';
-import { useStore } from './hooks';
-
-const wsUrl = `ws://localhost:${process.env.APP_SETTINGS_PORT}/ws`;
+import React, { useCallback, useMemo } from 'react';
+import { StoreContext } from './StoreContext';
+import { useStoreState } from './hooks';
+import { WsProvider } from './WsProvider';
+import { RequestLog, WsMessage } from '../../../types';
 
 export const StoreProvider: React.FC = ({ children }) => {
-    const { logs, mocks } = useStore();
+    const { logs, mocks, addLogs } = useStoreState();
 
-    const [input, setInput] = useState('');
+    const onMessage: (items: WsMessage<unknown>) => void = useCallback(({ type, body }) => {
+        if (type === 'logs') {
+            addLogs([body as RequestLog]);
+        }
+    }, [addLogs]);
 
-    const socket = useMemo(() => new WebSocket(wsUrl), []);
-
-    useEffect(() => {
-
-        socket.onerror = function (this, error) {
-            console.error('WebSocket Error: ', error);
-        };
-
-
-        socket.onopen = function (event) {
-            console.log(`Connected to: ${JSON.stringify(event)}`);
-        };
-
-
-        socket.onmessage = (message) => {
-            try {
-                console.log('message', message);
-            } catch (error) {
-                console.warn(error);
-                console.warn('The message does not seem to be valid JSON.');
-            }
-        };
-
-        socket.onclose = () => console.warn('Closes');
-
-    }, [socket]);
-
-    const sendCb = () => socket.send(JSON.stringify({ text: input }));
+    const value = useMemo(() => ({ logs, mocks }), [logs, mocks]);
 
     return (
-        <StoreContext.Provider value={{ logs, mocks }}>
-            <button onClick={sendCb}>send</button>
-            <input value={input} onChange={(ev) => setInput(ev.target.value)}/>
-            {children}
+        <StoreContext.Provider value={value}>
+            <WsProvider messageHandler={onMessage}>
+                {children}
+            </WsProvider>
         </StoreContext.Provider>
     );
 };

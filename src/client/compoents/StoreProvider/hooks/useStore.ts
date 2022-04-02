@@ -1,16 +1,11 @@
-import { useState } from 'react';
-import { RequestMock, RequestLog } from '../../../../types';
-import { StoreCtx } from '../types';
+import { useContext } from 'react';
+import { StoreContext } from '../StoreContext';
 
-export const useStore = ():StoreCtx => {
-    const [logs, setLogs] = useState<RequestLog[]>([]);
-    const [mocks] = useState<RequestMock[]>([]);
+export const useStore = () => {
+    const context = useContext(StoreContext);
+    if (!context) {
+        throw new Error('useStore must be used with StoreContext provided');
+    }
 
-    const addLog = (newItem: RequestLog) => {
-        setLogs((prev) => [newItem, ...prev]);
-    };
-
-    const updateMock = () => null;
-
-    return { logs, mocks, addLog, updateMock };
+    return context;
 };

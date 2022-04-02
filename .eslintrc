@@ -25,6 +25,7 @@
     "import"
   ],
   "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
     "prefer-template": "error",
     "object-curly-spacing": ["error", "always"],
     "eqeqeq": "error",
