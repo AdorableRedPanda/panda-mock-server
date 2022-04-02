@@ -1,7 +1,10 @@
-import express, { Express } from 'express';
+import express from 'express';
 import path from 'path';
+import http from 'http';
 
-export const serveStaticData = (port: string): Express => {
+const settingsPort = process.env.APP_SETTINGS_PORT || '9161';
+
+export const serveStaticData = (): http.Server => {
     const app = express();
 
     app.get('/', (_, res) => {
@@ -10,7 +13,5 @@ export const serveStaticData = (port: string): Express => {
 
     app.use(express.static('client'));
 
-    app.listen(port);
-
-    return app;
+    return app.listen(settingsPort, () => console.log(`settings server is listening port ${settingsPort}`));
 };

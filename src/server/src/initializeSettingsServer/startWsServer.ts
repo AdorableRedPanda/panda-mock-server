@@ -1,11 +1,8 @@
 import { WebSocketServer } from 'ws';
-import { Express } from 'express';
+import http from 'http';
 
-export const startWsServer = (express: Express) => {
-    const ws_server = new WebSocketServer({
-        noServer: true,
-        path: '/ws'
-    });
+export const startWsServer = (server: http.Server) => {
+    const ws_server = new WebSocketServer({ server });
 
     ws_server.on('connection', (ws) => {
         ws.on('message', (message) => {
@@ -13,12 +10,4 @@ export const startWsServer = (express: Express) => {
             ws.send(`Hi, you sent me: ${message}`);
         });
     });
-
-    express.on('upgrade', (request, socket, head) => {
-        console.log('upgrade:', request, socket, head);
-        ws_server.handleUpgrade(request, socket, head, (websocket) => {
-            ws_server.emit('connection', websocket, request);
-        });
-    });
-
 };

@@ -6,6 +6,7 @@ dotenv.config({ path: './.env' });
 
 module.exports = {
 	mode: 'development',
+	devtool: 'eval-source-map',
 	target: 'node',
 	entry: ['./src/server/index.ts'],
 	output: {

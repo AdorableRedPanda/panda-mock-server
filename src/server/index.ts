@@ -4,5 +4,5 @@ import { RequestsMocker } from './src/RequestsMocker';
 
 const mocker = new RequestsMocker();
 
-const loggReq = initializeSettingsServer(mocker);
+const loggReq = initializeSettingsServer();
 initializeMockServer(loggReq, mocker.getResponse);
