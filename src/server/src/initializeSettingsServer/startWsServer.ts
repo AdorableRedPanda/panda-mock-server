@@ -8,11 +8,6 @@ export const startWsServer = (server: http.Server) => {
     const connections: WebSocket[] = [];
 
     ws_server.on('connection', (ws) => {
-        ws.send(WsMessageUtils.buildMessageStr(
-                'logs',
-                { path:'/0000', method:'get', query:{}, body: null, response: { code:404, data:'request is not mocked' } }
-            )
-        );
 
         connections.push(ws);
 
