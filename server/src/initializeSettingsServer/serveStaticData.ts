@@ -1,7 +1,7 @@
-import express from 'express';
+import express, { Express } from 'express';
 import path from 'path';
 
-export const serveStaticData = (port: string) => {
+export const serveStaticData = (port: string): Express => {
     const app = express();
 
     app.get('/', (_, res) => {
@@ -11,4 +11,6 @@ export const serveStaticData = (port: string) => {
     app.use(express.static('client'));
 
     app.listen(port);
+
+    return app;
 };
