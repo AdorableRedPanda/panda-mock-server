@@ -7,7 +7,6 @@
     "build:client": "webpack -c webpack/client.build.js",
     "start:client": "webpack serve -c webpack/client.dev.js",
     "build:server": "webpack -c webpack/server.common.js",
-    "start:server": "webpack serve -c webpack/server.common.js",
     "build": "npm run build:client && npm run build:server"
   },
   "repository": {
@@ -27,7 +26,6 @@
   "dependencies": {
     "@babel/core": "7.17.8",
     "@babel/preset-env": "7.16.11",
-    "open": "8.4.0",
     "express": "4.17.3",
     "webpack": "5.70.0",
     "babel-core": "6.26.3",

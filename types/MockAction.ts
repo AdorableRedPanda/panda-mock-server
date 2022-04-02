@@ -1,4 +1,4 @@
-import {MockValue} from "./MockValue";
+import {RequestMock} from "./RequestMock";
 
 export type MockActionType = 'upsert' | 'delete';
 
@@ -7,7 +7,7 @@ interface MockPattern {
 }
 
 interface UpdateAction extends MockPattern {
-    next: MockValue;
+    next: RequestMock;
 }
 
 type DeleteAction = MockPattern;

@@ -1,7 +1,6 @@
-import {HttpMethod} from "./HttpMethod";
+import {RequestSignature} from "./RequestSignature";
+import {Response} from "./Response";
 
-export interface RequestLog {
-    method: HttpMethod;
-    path: string;
-    response: unknown;
+export interface RequestLog<T = unknown> extends RequestSignature {
+    response: Response<T>;
 }

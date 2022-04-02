@@ -1,1 +1,0 @@
-export {initializeMocks} from './initializeMocks';

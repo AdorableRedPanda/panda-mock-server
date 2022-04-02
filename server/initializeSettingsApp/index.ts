@@ -1,1 +1,0 @@
-export {initializeSettingsApp} from './initializeSettingsApp';

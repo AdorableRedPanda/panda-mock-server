@@ -1,13 +1,13 @@
-import {MockActionType, MockValue, RequestLog} from "../../../types";
+import {MockActionType, RequestMock, RequestLog} from "../../../types";
 
 export interface StoreState {
     logs: RequestLog[];
-    mocks: MockValue[];
+    mocks: RequestMock[];
 }
 
 interface StoreUpdates {
     addLog: (newItem: RequestLog) => void;
-    updateMock: (type: MockActionType, newValue: MockValue | null) => void;
+    updateMock: (type: MockActionType, newValue: RequestMock | null) => void;
 }
 
 export type StoreCtx = StoreUpdates & StoreState;
