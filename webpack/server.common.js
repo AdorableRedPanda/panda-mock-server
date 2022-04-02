@@ -7,7 +7,7 @@ dotenv.config({ path: './.env' });
 module.exports = {
 	mode: 'development',
 	target: 'node',
-	entry: ['./server/index.ts'],
+	entry: ['./src/server/index.ts'],
 	output: {
 		filename: 'mock-server.js',
 		path: path.resolve(__dirname, '../dist')

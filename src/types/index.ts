@@ -5,3 +5,4 @@ export { MockPattern } from './MockPattern';
 export { Method } from './Method';
 export { Request } from './Request';
 export { RequestSignature } from './RequestSignature';
+export { WsMessage } from './WsMessage';

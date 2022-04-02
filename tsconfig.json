@@ -27,7 +27,6 @@
     "node_modules"
   ],
   "include": [
-    "./client",
-    "./server"
+    "./src"
   ]
 }

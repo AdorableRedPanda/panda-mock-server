@@ -8,14 +8,14 @@ export const startWsServer = (express: Express) => {
     });
 
     ws_server.on('connection', (ws) => {
-        console.log('A client connected');
         ws.on('message', (message) => {
-            console.log('message', message.toString());
-            ws.send('Hi, you sent me ' + message);
+            console.log(`message: ${ message.toString()}`);
+            ws.send(`Hi, you sent me: ${message}`);
         });
     });
 
     express.on('upgrade', (request, socket, head) => {
+        console.log('upgrade:', request, socket, head);
         ws_server.handleUpgrade(request, socket, head, (websocket) => {
             ws_server.emit('connection', websocket, request);
         });

@@ -7,7 +7,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 dotenv.config({ path: './.env' });
 
 module.exports = {
-	entry: './client/index.tsx',
+	entry: './src/client/index.tsx',
 	output: {
 		filename: 'mock-client.[name].js',
 		path: path.resolve(__dirname, '../dist/client/')
@@ -27,7 +27,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: './client/index.html',
+			template: './src/client/index.html',
 			filename: './index.html',
 		}),
 		new webpack.DefinePlugin({

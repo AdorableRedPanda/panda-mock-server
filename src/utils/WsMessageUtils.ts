@@ -1,9 +1,9 @@
-import {WsMessage} from "./types/WsMessage";
-import {WsMessageType} from "./types/WsMessageType";
+import { WsMessage } from '../types';
+import { WsMessageType } from '../types/WsMessageType';
 
 const isWsMessageType = (type: unknown): type is WsMessageType => (
     typeof type === 'string' && (type === 'log' || type === 'mockUpdate')
-)
+);
 
 const isWsMessage = (value: unknown): value is WsMessage<unknown> => {
     if (typeof value !== 'object' || !value) {
@@ -14,17 +14,17 @@ const isWsMessage = (value: unknown): value is WsMessage<unknown> => {
         return false;
     }
 
-    return isWsMessageType((value as any).type) && (value as any).body !== undefined;
-}
+    return isWsMessageType((value as { type: unknown }).type) && (value as { body: unknown }).body !== undefined;
+};
 
 const parse = <T>(str: string): WsMessage<T> => {
     const parsed = JSON.parse(str);
     if (!isWsMessage(parsed)) {
-        throw new Error('invalid message format')
+        throw new Error('invalid message format');
     }
-    return parsed as WsMessage<any>;
-}
+    return parsed as WsMessage<T>;
+};
 
-const build = <T>(type: WsMessageType, body:T): WsMessage<T> => ({type, body});
+const build = <T>(type: WsMessageType, body:T): WsMessage<T> => ({ type, body });
 
-export const WsMessage = {build, parse};
+export const WsMessageUtils = { build, parse };

@@ -11,6 +11,7 @@ export const initializeMockServer = (
     getResponse: <T>(req: Request<T>) => Response<string>
 ) => {
     const app = express();
+    console.log(`mock server is listening port ${mockedPort}`);
 
     app.all('/*', (req, res) => {
         const preparedReq = buildRequest(req.path, req.method, req.body, req.query);
