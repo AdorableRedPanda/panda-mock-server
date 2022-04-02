@@ -1,6 +1,6 @@
-import React from "react";
-import {NavLink} from 'react-router-dom';
-import {AppRoutes} from "../../../constants";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { AppRoutes } from '../../../constants';
 
 export const Navigation: React.FC = () => (
     <ul className="navigation">
@@ -11,4 +11,4 @@ export const Navigation: React.FC = () => (
             <NavLink to={AppRoutes.Mocks}>Mocks</NavLink>
         </li>
     </ul>
-)
+);

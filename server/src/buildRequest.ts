@@ -1,4 +1,4 @@
-import {Method, Request} from "../../types";
+import { Method, Request } from '../../types';
 
 export const buildRequest = <T, Q>(
     path: string,
@@ -10,6 +10,6 @@ export const buildRequest = <T, Q>(
         path,
         method: method.toLowerCase() as Method,
         body: body || null,
-        query: query || {},
+        query: query || {}
     }
-)
+);

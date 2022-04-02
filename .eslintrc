@@ -12,7 +12,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts"]
+        "extensions": [".ts", ".tsx"]
       }
     }
   },
@@ -40,7 +40,7 @@
     "no-unneeded-ternary": "error",
     "prefer-arrow-callback": "error",
     "arrow-body-style": "warn",
-    "semi": ["error", "never"],
+    "semi": ["error", "always"],
     "comma-spacing": "error",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/prefer-includes": "error",

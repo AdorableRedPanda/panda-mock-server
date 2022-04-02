@@ -1,10 +1,10 @@
-import React from "react";
-import {StoreProvider} from "./StoreProvider";
-import {AppWrapper} from "./AppWrapper";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AppRoutes} from "./constants";
-import {Logs} from "./Logs";
-import {Mocks} from "./Mocks";
+import React from 'react';
+import { StoreProvider } from './StoreProvider';
+import { AppWrapper } from './AppWrapper';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppRoutes } from './constants';
+import { Logs } from './Logs';
+import { Mocks } from './Mocks';
 
 export const App:React.FC = () => (
     <StoreProvider>
@@ -17,4 +17,4 @@ export const App:React.FC = () => (
             </AppWrapper>
         </BrowserRouter>
     </StoreProvider>
-)
+);

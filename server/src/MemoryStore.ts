@@ -1,7 +1,7 @@
-import {RequestSignature, MockPattern, RequestMock} from "../../types";
-import {MocksStore} from "../types";
+import { RequestSignature, MockPattern, RequestMock } from '../../types';
+import { MocksStore } from '../types';
 
-const isEqual = (req: RequestSignature, mock: RequestSignature): boolean =>  mock.method === req.method && mock.path === req.path;
+const isEqual = (req: RequestSignature, mock: RequestSignature): boolean => mock.method === req.method && mock.path === req.path;
 
 export class MemoryStore implements MocksStore {
     private mocks: RequestMock[] = [];
@@ -23,7 +23,7 @@ export class MemoryStore implements MocksStore {
 
     public setMock = (req: RequestSignature, pattern: MockPattern) => {
         const others = this.mocks.filter((mock) => !isEqual(mock, req));
-        this.mocks = [...others, {...req, pattern}]
+        this.mocks = [...others, { ...req, pattern }];
     }
 
     public getList = () => this.mocks;

@@ -1,7 +1,7 @@
-import {MemoryStore} from "./MemoryStore";
-import {RequestsHandler} from "../types";
-import {Request} from "../../types";
-import {Response} from "../../types/Response";
+import { MemoryStore } from './MemoryStore';
+import { RequestsHandler } from '../types';
+import { Request } from '../../types';
+import { Response } from '../../types/Response';
 
 export class RequestsMocker implements RequestsHandler {
     private store = new MemoryStore();
@@ -14,10 +14,10 @@ export class RequestsMocker implements RequestsHandler {
     public getResponse = <T>(req: Request<T>): Response<string> => {
         try {
             const mock = this.store.getMock(req);
-            return { code: 200, data: mock}
+            return { code: 200, data: mock };
 
         } catch {
-            return { code: 404, data: 'request is not mocked'}
+            return { code: 404, data: 'request is not mocked' };
         }
     }
 

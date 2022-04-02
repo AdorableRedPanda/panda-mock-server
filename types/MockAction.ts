@@ -1,4 +1,4 @@
-import {RequestMock} from "./RequestMock";
+import { RequestMock } from './RequestMock';
 
 export type MockActionType = 'upsert' | 'delete';
 

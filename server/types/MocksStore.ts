@@ -1,4 +1,4 @@
-import {MockPattern, RequestMock, RequestSignature} from "../../types";
+import { MockPattern, RequestMock, RequestSignature } from '../../types';
 
 export interface MocksStore {
     getMock(req: RequestSignature): MockPattern;

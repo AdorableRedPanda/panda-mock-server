@@ -1,1 +1,1 @@
-export {initializeSettingsServer} from './initializeSettingsServer';
+export { initializeSettingsServer } from './initializeSettingsServer';
