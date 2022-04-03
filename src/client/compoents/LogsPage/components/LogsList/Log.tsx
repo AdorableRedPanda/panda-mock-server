@@ -1,5 +1,5 @@
 import React from 'react';
-import { RequestLog } from '../../../types';
+import { RequestLog } from '../../../../../types';
 
 interface Props {
     item: RequestLog;
@@ -15,6 +15,7 @@ export const Log: React.FC<Props> = ({ item }) => {
     const params = item.queryParams.map(([key, value]) => `${key}:${value}`).join(', ');
     return (
         <tr className="row">
+            <Cell children={item.timestamp}/>
             <Cell children={item.method.toUpperCase()}/>
             <Cell children={item.response.code}/>
             <Cell children={item.path}/>

@@ -6,11 +6,16 @@ import { RequestLog } from '../../../types';
 export const initializeSettingsServer = (): LoggerCb => {
     const server = serveStaticData();
 
-    const wsLogger = startWsServer(server);
+    // todo: move to service
+    const logs: RequestLog[] = [];
+
+    const wsLogger = startWsServer(server, logs);
 
     return (req, res) => {
-        const log: RequestLog = { response: res, ...req };
+        const timestamp = (new Date()).toLocaleTimeString();
+        const log: RequestLog = { response: res, ...req, timestamp };
+        logs.push(log);
         console.log('\x1b[33m%s\x1b[0m', log);
-        wsLogger(JSON.stringify(log));
+        wsLogger(log);
     };
 };

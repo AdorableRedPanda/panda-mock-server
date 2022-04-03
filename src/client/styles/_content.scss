@@ -1,5 +1,9 @@
 .content {
   margin: auto 0;
   flex-grow: 1;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.title {
+  margin: 10px auto;
 }

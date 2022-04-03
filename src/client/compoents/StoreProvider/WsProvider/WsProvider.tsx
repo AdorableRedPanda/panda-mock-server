@@ -5,7 +5,7 @@ import { WsMessage } from '../../../../types';
 
 
 interface Props {
-    messageHandler: <T>(message: WsMessage<T>) => void;
+    messageHandler: (message: WsMessage) => void;
 }
 
 export const WsProvider: React.FC<Props> = ({ children, messageHandler }) => {

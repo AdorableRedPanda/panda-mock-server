@@ -6,8 +6,8 @@ import { WsSender } from '../types';
 const wsPort = process.env.APP_SETTINGS_PORT;
 const wsUrl = `ws://localhost:${wsPort}/ws`;
 
-export const useWsConnection = <T>(
-    handleMessage: (message: WsMessage<T>) => void
+export const useWsConnection = (
+    handleMessage: (message: WsMessage) => void
 ) => {
     const socket = useMemo(() => new WebSocket(wsUrl), []);
 

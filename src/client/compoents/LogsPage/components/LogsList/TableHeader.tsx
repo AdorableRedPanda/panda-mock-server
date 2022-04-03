@@ -2,6 +2,7 @@ import React from 'react';
 
 export const TableHeader: React.FC = () => (
     <tr className="row">
+        <th>Timestamp</th>
         <th>Method</th>
         <th>Code</th>
         <th>Path</th>

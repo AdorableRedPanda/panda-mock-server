@@ -1,15 +1,20 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import http from 'http';
+import { RequestLog } from '../../../types';
+import { WsMessageType } from '../../../types/WsMessageType';
 import { WsMessageUtils } from '../../../utils';
 
-export const startWsServer = (server: http.Server) => {
+export const startWsServer = (server: http.Server, logsHistory: RequestLog[]) => {
     const ws_server = new WebSocketServer({ server });
 
     const connections: WebSocket[] = [];
 
-    ws_server.on('connection', (ws) => {
+    const sendToAll = <T>(type: WsMessageType, body:T) =>
+        connections.forEach((ws) => ws.send(WsMessageUtils.buildMessageStr(type, body)));
 
+    ws_server.on('connection', (ws) => {
         connections.push(ws);
+        ws.send(WsMessageUtils.buildMessageStr('logs', logsHistory));
 
         ws.on('message', (message) => {
             // todo: subscribe to config the mocker here
@@ -17,5 +22,5 @@ export const startWsServer = (server: http.Server) => {
         });
     });
 
-    return (message: string) => connections.forEach((ws) => ws.send(WsMessageUtils.buildMessageStr('logs', message)));
+    return (log: RequestLog) => sendToAll('logs', [log]);
 };

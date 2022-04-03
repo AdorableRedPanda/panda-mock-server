@@ -1,6 +1,9 @@
 import { WsMessageType } from './WsMessageType';
+import { RequestLog } from './RequestLog';
 
-export interface WsMessage<T> {
-    type: WsMessageType;
-    body: T;
+interface Message<Type extends WsMessageType, TBody> {
+    type: Type;
+    body: TBody;
 }
+
+export type WsMessage = Message<'logs', RequestLog[]>;

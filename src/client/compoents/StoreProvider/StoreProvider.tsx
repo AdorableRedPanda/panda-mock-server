@@ -2,14 +2,14 @@ import React, { useCallback, useMemo } from 'react';
 import { StoreContext } from './StoreContext';
 import { useStoreState } from './hooks';
 import { WsProvider } from './WsProvider';
-import { RequestLog, WsMessage } from '../../../types';
+import { WsMessage } from '../../../types';
 
 export const StoreProvider: React.FC = ({ children }) => {
     const { logs, mocks, addLogs } = useStoreState();
 
-    const onMessage: (items: WsMessage<unknown>) => void = useCallback(({ type, body }) => {
+    const onMessage: (message: WsMessage) => void = useCallback(({ type, body }) => {
         if (type === 'logs') {
-            addLogs([body as RequestLog]);
+            addLogs(body);
         }
     }, [addLogs]);
 
