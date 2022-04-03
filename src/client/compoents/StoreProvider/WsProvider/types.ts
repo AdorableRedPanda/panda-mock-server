@@ -1,4 +1,5 @@
-import { WsMessageType } from '../../../../types/WsMessageType';
+import { WsMessageType } from '../../../../types';
+
 
 export interface WsCtx {
     send: WsSender;

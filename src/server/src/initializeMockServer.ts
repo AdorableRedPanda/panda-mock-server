@@ -1,8 +1,7 @@
 import express from 'express';
 import { LoggerCb } from '../types';
 import { buildRequest } from './buildRequest';
-import { Request } from '../../types';
-import { Response } from '../../types/Response';
+import { Request, Response } from '../../types';
 
 const mockedPort = process.env.APP_MOCKS_PORT;
 

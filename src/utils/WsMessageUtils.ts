@@ -1,5 +1,4 @@
-import { WsMessage } from '../types';
-import { WsMessageType } from '../types/WsMessageType';
+import { WsMessage, WsMessageType } from '../types';
 
 const WsMessageTypes: WsMessageType[] = ['logs', 'test_message', 'mock_update'];
 

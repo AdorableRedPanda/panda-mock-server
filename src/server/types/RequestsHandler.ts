@@ -1,5 +1,4 @@
-import { Request, RequestMock } from '../../types';
-import { Response } from '../../types/Response';
+import { Request, RequestMock, Response } from '../../types';
 
 export interface RequestsHandler {
     getResponse: <T>(req: Request<T>) => Response<unknown>;

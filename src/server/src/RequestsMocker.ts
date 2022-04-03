@@ -1,7 +1,6 @@
 import { MemoryStore } from './MemoryStore';
 import { RequestsHandler } from '../types';
-import { Request } from '../../types';
-import { Response } from '../../types/Response';
+import { Request, Response } from '../../types';
 
 export class RequestsMocker implements RequestsHandler {
     private store = new MemoryStore();

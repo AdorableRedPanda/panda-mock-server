@@ -6,3 +6,5 @@ export { Method } from './Method';
 export { Request } from './Request';
 export { RequestSignature } from './RequestSignature';
 export { WsMessage } from './WsMessage';
+export { Response } from './Response';
+export { WsMessageType } from './WsMessageType';

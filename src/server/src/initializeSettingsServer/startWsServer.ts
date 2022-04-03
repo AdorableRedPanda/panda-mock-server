@@ -1,7 +1,6 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import http from 'http';
-import { RequestLog } from '../../../types';
-import { WsMessageType } from '../../../types/WsMessageType';
+import { RequestLog, WsMessageType } from '../../../types';
 import { WsMessageUtils } from '../../../utils';
 
 export const startWsServer = (server: http.Server, logsHistory: RequestLog[]) => {
