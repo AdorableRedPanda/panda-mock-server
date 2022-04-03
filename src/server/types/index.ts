@@ -1,3 +1,3 @@
 export { MocksStore } from './MocksStore';
-export { LoggerCb } from './LoggerCb';
+export { WsLogger } from './WsLogger';
 export { RequestsHandler } from './RequestsHandler';
