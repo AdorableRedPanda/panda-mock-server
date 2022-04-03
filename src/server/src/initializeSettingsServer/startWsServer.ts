@@ -14,7 +14,7 @@ export const startWsServer = (server: http.Server, logsHistory: RequestLog[]): W
 
     ws_server.on('connection', (ws) => {
         connections.push(ws);
-        ws.send(WsMessageUtils.buildMessageStr('logs', logsHistory.reverse()));
+        ws.send(WsMessageUtils.buildMessageStr('logs', logsHistory.slice().reverse()));
 
         ws.on('message', (message) => {
             // todo: subscribe to config the mocker here
