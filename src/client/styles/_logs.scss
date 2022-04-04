@@ -3,6 +3,7 @@
   height: 100%;
 
   .logs_table {
+    table-layout: fixed;
     border-collapse: collapse;
     width: 100%;
 
@@ -17,12 +18,32 @@
   }
   .cell {
     text-align: left;
-    padding: 5px;
+    padding: 5px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: baseline;
+  }
+  .params {
+    display: flex;
+    flex-direction: row;
+
+    gap: 5px;
   }
 
-  .logs_row:nth-child(even) {
-    background-color: #414952;
-    color: #fefdff;
+  .expanded {
+    .params {
+      gap: 0;
+      flex-direction: column;
+    }
+    .cell {
+      white-space: break-spaces;
+      word-break: break-all;
+    }
+  }
+
+  .log_row {
+    border-bottom: 1px solid #414952;
   };
 }
 

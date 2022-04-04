@@ -8,7 +8,7 @@ const wsUrl = `ws://localhost:${wsPort}/ws`;
 
 export const useWsConnection = (
     handleMessage: (message: WsMessage) => void
-) => {
+): WsSender => {
     const socket = useMemo(() => new WebSocket(wsUrl), []);
 
     const onMessage = useCallback((ev: MessageEvent) => {
@@ -29,10 +29,8 @@ export const useWsConnection = (
 
     }, [socket]);
 
-    const wsSend: WsSender = useCallback(
+    return useCallback(
         (type, body) => socket.send(WsMessageUtils.buildMessageStr(type, body)),
         []
     );
-
-    return wsSend;
 };

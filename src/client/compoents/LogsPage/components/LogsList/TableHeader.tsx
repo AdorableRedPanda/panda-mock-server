@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Config = [
-    ['Timestamp', '10%'],
-    ['Method', '10%'],
+    ['Timestamp', '5%'],
+    ['Method', '5%'],
     ['Path', '20%'],
-    ['Query params', '20%' ],
+    ['Query params', '10%' ],
     ['Body', '20%'],
-    ['Response', '20%']
+    ['Response', '20%'],
+    ['', '5%']
 ];
 
 export const TableHeader: React.FC = () => (
