@@ -9,7 +9,6 @@ export const LogsList: React.FC = () => {
 
     return (
         <div className="logs_list">
-            <h2 className="title">Mock server requests</h2>
             <table className="logs_table">
                 <TableHeader />
                 <tbody>

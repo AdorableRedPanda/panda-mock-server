@@ -16,3 +16,8 @@ h1, h2, h3, h4, h5, h6, ul, li {
   flex-direction: column;
   overflow: hidden;
 }
+
+button {
+  height: fit-content;
+  margin: 0 10px;
+}
