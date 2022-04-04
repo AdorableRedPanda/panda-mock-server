@@ -7,7 +7,7 @@ const settingsPort = process.env.APP_SETTINGS_PORT || '9161';
 export const serveStaticData = (): http.Server => {
     const app = express();
 
-    app.get('/', (_, res) => {
+    app.get('/*', (_, res) => {
         res.sendFile(path.join(__dirname, '/client/index.html'));
     });
 

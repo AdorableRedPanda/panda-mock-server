@@ -17,11 +17,10 @@ export const Log: React.FC<Props> = ({ item }) => {
         <tr className="row">
             <Cell children={item.timestamp}/>
             <Cell children={item.method.toUpperCase()}/>
-            <Cell children={item.response.code}/>
             <Cell children={item.path}/>
             <Cell children={params}/>
             <Cell children={JSON.stringify(item.body)}/>
-            <Cell children={JSON.stringify(item.response.data)}/>
+            <Cell children={JSON.stringify(item.response)}/>
         </tr>
     );
 };

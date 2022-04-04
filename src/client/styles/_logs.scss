@@ -1,36 +1,29 @@
 .logs_page {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
   width: 100%;
   height: 100%;
 
-  .column {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+  .logs_table {
+    border-collapse: collapse;
+    width: 100%;
 
-    .content {
-      flex-grow: 1;
-    }
   }
 
   .logs_list {
-
-    tr {
-      flex-grow: 1;
-      margin: 10px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 4fr 4fr 4fr 4fr;
-      border-bottom: 1px solid #24292f;
-
-      .cell {
-        text-align: center;
-      }
-    }
+    margin: 0 10px;
   }
 
-  .logs_test {
+  .logs_header {
+    border-bottom: 1px solid #24292f;
   }
+  .cell {
+    text-align: left;
+    padding: 5px;
+  }
+
+  .logs_row:nth-child(even) {
+    background-color: #414952;
+    color: #fefdff;
+  };
 }
+
 
