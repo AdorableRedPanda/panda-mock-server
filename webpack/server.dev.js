@@ -1,3 +1,4 @@
+const NodemonPlugin = require('nodemon-webpack-plugin'); // Ding
 const build = require('./server.build');
 
 module.exports = {
@@ -9,4 +10,8 @@ module.exports = {
 	optimization: {
 		minimize: false,
 	},
+	plugins: [
+		...build.plugins,
+		new NodemonPlugin(),
+	]
 }

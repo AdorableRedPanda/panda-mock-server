@@ -7,11 +7,9 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack -c webpack/client.build.js",
     "build:server": "webpack -c webpack/server.build.js",
-    "start:client": "webpack serve -c webpack/client.dev.js",
-    "watch:build": "webpack -c webpack/server.dev.js",
-    "watch:server": "nodemon \"./dist/mock-server.js\" --watch \"./dist/mock-server.js",
-    "start:server": "concurrently npm:watch:*",
-    "dev": "concurrently npm:start:*"
+    "dev:client": "webpack serve -c webpack/client.dev.js",
+    "dev:server": "webpack -c webpack/server.dev.js",
+    "dev": "concurrently npm:dev:*"
   },
   "repository": {
     "type": "git",
@@ -60,6 +58,6 @@
     "typescript": "4.6.3",
     "webpack-dev-server": "4.7.4",
     "nodemon": "2.0.15",
-    "concurrently": "7.1.0"
+    "nodemon-webpack-plugin": "4.7.1"
   }
 }
