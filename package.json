@@ -4,10 +4,14 @@
   "description": "simple app to mock requests",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:client && npm run build:server",
     "build:client": "webpack -c webpack/client.build.js",
+    "build:server": "webpack -c webpack/server.build.js",
     "start:client": "webpack serve -c webpack/client.dev.js",
-    "build:server": "webpack -c webpack/server.common.js",
-    "build": "npm run build:client && npm run build:server"
+    "watch:build": "webpack -c webpack/server.dev.js",
+    "watch:server": "nodemon \"./dist/mock-server.js\" --watch \"./dist/mock-server.js",
+    "start:server": "concurrently npm:watch:*",
+    "dev": "concurrently npm:start:*"
   },
   "repository": {
     "type": "git",
@@ -54,6 +58,8 @@
     "eslint-plugin-react": "7.28.0",
     "eslint": "7.11.0",
     "typescript": "4.6.3",
-    "webpack-dev-server": "4.7.4"
+    "webpack-dev-server": "4.7.4",
+    "nodemon": "2.0.15",
+    "concurrently": "7.1.0"
   }
 }
