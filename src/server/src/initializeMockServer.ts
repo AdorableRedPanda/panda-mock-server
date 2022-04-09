@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { WsLogger } from '../types';
 import { buildRequest } from './buildRequest';
-import { Request, RequestLog, Response } from '../../types';
+import { Method, Request, RequestLog, Response } from '../../types';
 
 const mockedPort = process.env.APP_MOCKS_PORT;
 
@@ -17,11 +17,11 @@ export const initializeMockServer = (
 ) => {
     const app = express();
 
-    app.use(bodyParser.json());
+    app.use(bodyParser.text());
 
     app.all('/*', (req, res) => {
-        console.log(req.body, req.method);
-        const preparedReq = buildRequest(req.path, req.method, req.body, req.query);
+        const preparedReq = buildRequest(req.path, req.method as Method, req.body, req.query);
+        console.log(req.path, req.method, req.body);
         const response = getResponse(preparedReq);
         res.status(response.code).send(response.data);
 
