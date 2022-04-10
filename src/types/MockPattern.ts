@@ -1,1 +1,1 @@
-export type MockPattern = string;
+export type MockPattern = unknown;

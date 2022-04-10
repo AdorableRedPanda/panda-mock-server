@@ -1,4 +1,4 @@
-export { TextInput } from './TextInput';
-export { TextArea } from './TextArea';
-export { Select } from './Select';
+export { TextareaInput } from './TextareaInput';
 export { Button } from './Button';
+export { MethodSelect } from './MethodSelect';
+export { JsonInput } from './JsonInput';

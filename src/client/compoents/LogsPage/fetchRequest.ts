@@ -5,7 +5,7 @@ import { MOCKS_PORT } from '../../../constants';
 export interface FetchArgs {
     url: string;
     method: Method;
-    body: unknown;
+    body: object;
 }
 
 export const fetchRequest = ({ url, method, body }: FetchArgs) => {

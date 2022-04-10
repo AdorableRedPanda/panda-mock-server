@@ -1,8 +1,8 @@
 import React, { BaseSyntheticEvent, useCallback } from 'react';
-import { SelectProps } from './types';
+import { SelectInputProps } from './types';
 import { InputWrapper } from './InputWrapper';
 
-export const Select: React.FC<SelectProps> = ({ value, onChange, label, name, options }) => {
+export const SelectInput: React.FC<SelectInputProps> = ({ value, onChange, label, name, options }) => {
     const onEvent = useCallback((ev: BaseSyntheticEvent) => onChange(ev.target.value), [onChange]);
     return (
         <InputWrapper name={name} label={label}>

@@ -7,5 +7,8 @@ export const Navigation: React.FC = () => (
         <li>
             <NavLink to={AppRoutes.Logs}>Logs</NavLink>
         </li>
+        <li>
+            <NavLink to={AppRoutes.Mocks}>Mocks</NavLink>
+        </li>
     </ul>
 );

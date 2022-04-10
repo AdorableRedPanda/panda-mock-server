@@ -4,7 +4,9 @@ import { MocksStore } from '../types';
 const isEqual = (req: RequestSignature, mock: RequestSignature): boolean => mock.method === req.method && mock.path === req.path;
 
 export class MemoryStore implements MocksStore {
-    private mocks: RequestMock[] = [];
+    private mocks: RequestMock[] = [
+        { path:'/', method: 'GET', pattern: { 'hi from': 'mocks' } }
+    ];
 
     constructor() {
         this.getMock.bind(this);

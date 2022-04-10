@@ -1,0 +1,17 @@
+.form {
+  width: 100%;
+  display: grid;
+
+
+  .submit_wrapper {
+    padding-top: 10px;
+  }
+}
+
+.form.request {
+  grid-template-columns: 5fr 3fr 5fr 1fr;
+}
+
+.form.mock {
+  grid-template-columns: 4fr 3fr 3fr 5fr 1fr;
+}

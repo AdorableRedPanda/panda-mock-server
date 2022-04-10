@@ -3,11 +3,13 @@ export interface LabelProps {
     name: string;
 }
 
-export interface InputProps extends LabelProps {
-    onChange: (value: string) => void;
-    value: string;
+export interface ChangeHandler<T = string> {
+    onChange: (value: T) => void;
+    value: T;
 }
 
-export interface SelectProps extends InputProps {
+export type InputProps<T = string> = ChangeHandler<T> & LabelProps;
+
+export interface SelectInputProps<T extends string = string> extends InputProps<T> {
     options: string[];
 }
