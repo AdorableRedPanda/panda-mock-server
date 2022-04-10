@@ -1,0 +1,16 @@
+.button {
+  height: fit-content;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+
+  font-weight: bolder;
+  color: var(--primary-bg);
+  background-color: var(--primary-button-color);
+
+  &:hover, &:active {
+    background-color: var(--active-button-color);
+  }
+
+  cursor: pointer;
+}

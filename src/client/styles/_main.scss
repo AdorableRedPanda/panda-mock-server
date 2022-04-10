@@ -1,11 +1,20 @@
+html {
+  --primary-bg: #fefdff;
+  --primary-color: #24292f;
+
+  --primary-button-color: #4267B2;
+  --active-button-color: #263b67;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-style: normal;
   font-family: 'Nunito', sans-serif;
-  color: #24292f;
-  background: #fefdff;
+  color: var(--primary-color);
+  background: var(--primary-bg);
 }
 h1, h2, h3, h4, h5, h6, ul, li {
   margin: 0;
@@ -17,7 +26,6 @@ h1, h2, h3, h4, h5, h6, ul, li {
   overflow: hidden;
 }
 
-button {
-  height: fit-content;
-  margin: 0 10px;
+.height-39 {
+  height: 39px;
 }

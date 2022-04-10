@@ -1,0 +1,24 @@
+.input-wrapper {
+  width: auto;
+  padding: 5px;
+  margin: 5px;
+  position: relative;
+
+
+  .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .label {
+    transform: translate(0, -50%);
+    position: absolute;
+    left: 15px;
+    background: var(--primary-bg);
+    padding: 0 3px;
+    margin: 0 3px;
+  }
+}
