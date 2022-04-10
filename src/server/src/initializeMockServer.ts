@@ -6,9 +6,9 @@ import { Method, Request, RequestLog, Response } from '../../types';
 import cors from 'cors';
 import { MOCKS_PORT } from '../../constants';
 
-const buildLog = (req: Request, response: Response<unknown>): RequestLog => {
+const buildLog = <T>(req: Request<T>, response: Response<T>): RequestLog<T> => {
     const timestamp = (new Date()).toLocaleTimeString();
-    return { response, ...req, timestamp };
+    return [timestamp, req.method, req.path, req.queryParams, req.body, response ];
 };
 
 export const initializeMockServer = (

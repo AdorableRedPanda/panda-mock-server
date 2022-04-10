@@ -1,7 +1,9 @@
 import { Response } from './Response';
-import { Request } from './Request';
+import { Method } from './Method';
+import { QueryParam } from './QueryParams';
 
-export interface RequestLog<T = unknown> extends Request {
-    response: Response<T>;
-    timestamp: string;
-}
+type Timestamp = string;
+type UrlPath = string;
+type QueryParams = QueryParam[];
+
+export type RequestLog<TBody = object> = [Timestamp, Method, UrlPath, QueryParams, TBody, Response<TBody>];

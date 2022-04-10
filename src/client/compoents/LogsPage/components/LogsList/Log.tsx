@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Log: React.FC<Props> = ({ item }) => {
-    const { timestamp, method, path, body, queryParams, response } = item;
+    const [timestamp, method, path, queryParams, body, response ] = item;
 
     const params = queryParams.map(([key, value]) => <span key={key} className="params_item">{`${key}=${value}`}</span>);
 
