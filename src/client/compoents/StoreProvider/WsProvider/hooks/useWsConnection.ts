@@ -2,9 +2,9 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { WsMessageUtils } from '../../../../../utils';
 import { WsMessage } from '../../../../../types';
 import { WsSender } from '../types';
+import { WS_PORT } from '../../../../../constants';
 
-const wsPort = process.env.APP_SETTINGS_PORT;
-const wsUrl = `ws://localhost:${wsPort}/ws`;
+const wsUrl = `ws://localhost:${WS_PORT}/ws`;
 
 export const useWsConnection = (
     handleMessage: (message: WsMessage) => void
@@ -20,8 +20,8 @@ export const useWsConnection = (
     }, [handleMessage]);
 
     useEffect(() => {
-        socket.onerror = (error) => console.error(`WS connection error on port ${ wsPort}`, error);
-        socket.onopen = () => console.info(`WS connected on port: ${wsPort}`);
+        socket.onerror = (error) => console.error(`WS connection error on port ${WS_PORT}`, error);
+        socket.onopen = () => console.info(`WS connected on port: ${WS_PORT}`);
         socket.onclose = () => console.info('WS connection  closed');
         socket.onmessage = onMessage;
 

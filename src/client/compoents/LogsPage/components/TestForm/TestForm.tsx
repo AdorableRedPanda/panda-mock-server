@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Method } from '../../../types';
-import { TextArea, TextInput, Select, Button } from '../atoms';
-
-
-interface FetchArgs {
-    url: string;
-    method: Method;
-    body: unknown;
-}
+import { Button, Select, TextArea, TextInput } from '../../../atoms';
+import { Method } from '../../../../../types';
+import { REST_METHODS } from '../../../../../constants';
+import { FetchArgs } from '../../fetchRequest';
 
 interface Props {
     handleSendClick: (form: FetchArgs) => void;
@@ -15,7 +10,7 @@ interface Props {
 
 export const TestForm: React.FC<Props> = ({ handleSendClick }) => {
 
-    const [args, setArgs] = useState<FetchArgs>({ url: '', method: 'GET', body: null });
+    const [args, setArgs] = useState<FetchArgs>({ url: '', method: 'GET', body: {} });
 
     const [bodyStr, setStrBody] = useState('');
 
@@ -25,12 +20,10 @@ export const TestForm: React.FC<Props> = ({ handleSendClick }) => {
     const onMethodChange = (method: Method) => setArgs((prev) => ({ ...prev, method }));
 
     useEffect(() => {
-        try { setBodyArg(JSON.parse(bodyStr)); } catch {
-            setBodyArg({});
-        }
+        try {
+            setBodyArg(JSON.parse(bodyStr));
+        } catch {}
     }, [bodyStr]);
-
-    const options: Method[] = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 
     const onSubmit = () => handleSendClick(args);
 
@@ -42,8 +35,8 @@ export const TestForm: React.FC<Props> = ({ handleSendClick }) => {
                 onChange={onUrlChange}
                 value={args.url}
             />
-            <Select options={options} value={args.method} onChange={onMethodChange} label="Method" name="method" />
-            <TextArea label="Body" name="body" onChange={setStrBody} value={bodyStr} />
+            <Select options={REST_METHODS} value={args.method} onChange={onMethodChange} label="Method" name="method" />
+            <TextArea label="Body (JSON)" name="body" onChange={setStrBody} value={bodyStr} />
             <div className="submit_wrapper">
                 <Button onClick={onSubmit} text="Request" />
             </div>

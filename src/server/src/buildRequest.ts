@@ -5,11 +5,11 @@ export const buildRequest = <T, Q extends object = {}>(
     method: Method,
     body: T,
     query: Q
-): Request<T|null> => (
+): Request<T> => (
     {
         path,
         method,
-        body: body || null,
+        body: body,
         queryParams: Object.entries(query)
     }
 );

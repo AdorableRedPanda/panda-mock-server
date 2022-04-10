@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import { WsLogger } from '../types';
 import { buildRequest } from './buildRequest';
 import { Method, Request, RequestLog, Response } from '../../types';
-
-const mockedPort = process.env.APP_MOCKS_PORT;
+import cors from 'cors';
+import { MOCKS_PORT } from '../../constants';
 
 const buildLog = (req: Request, response: Response<unknown>): RequestLog => {
     const timestamp = (new Date()).toLocaleTimeString();
@@ -17,16 +17,22 @@ export const initializeMockServer = (
 ) => {
     const app = express();
 
-    app.use(bodyParser.text());
+    app.use(cors({ maxAge: 600 }));
+
+    app.use(bodyParser.json());
 
     app.all('/*', (req, res) => {
-        const preparedReq = buildRequest(req.path, req.method as Method, req.body, req.query);
-        console.log(req.path, req.method, req.body);
-        const response = getResponse(preparedReq);
-        res.status(response.code).send(response.data);
+        try {
+            const preparedReq = buildRequest(req.path, req.method as Method, req.body, req.query);
+            const response = getResponse(preparedReq);
+            res.status(response.code).send(response.data);
 
-        logRequest(buildLog(preparedReq, response));
+            logRequest(buildLog(preparedReq, response));
+        } catch (e) {
+            console.log(e);
+            res.status(500).send('unsupported body type');
+        }
     });
 
-    app.listen(mockedPort, () => console.log(`mock server is listening port ${mockedPort}`));
+    app.listen(MOCKS_PORT, () => console.log(`mock server is listening port ${MOCKS_PORT}`));
 };
