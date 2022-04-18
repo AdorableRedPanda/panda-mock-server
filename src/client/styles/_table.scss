@@ -1,0 +1,18 @@
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cell {
+  text-align: left;
+  padding: 5px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: baseline;
+}
+
+.table_header {
+  border-bottom: 1px solid #24292f;
+}

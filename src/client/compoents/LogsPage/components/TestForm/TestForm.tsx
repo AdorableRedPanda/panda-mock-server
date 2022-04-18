@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, JsonInput, MethodSelect } from '../../../atoms';
 import { FetchArgs } from '../../fetchRequest';
 import { TextInput } from '../../../atoms/TextInput';
+import { MOCKS_PORT } from '../../../../../constants';
 
 interface Props {
     handleSendClick: (form: FetchArgs) => void;
@@ -17,9 +18,12 @@ export const TestForm: React.FC<Props> = ({ handleSendClick }) => {
     
     const onSubmit = () => handleSendClick(args);
 
+    const placeholder = `http://localhost:${MOCKS_PORT}/...`;
+
     return (
         <form className="request form" >
             <TextInput
+                placeholder={placeholder}
                 name="url"
                 label="Url"
                 onChange={fieldSetter('url')}

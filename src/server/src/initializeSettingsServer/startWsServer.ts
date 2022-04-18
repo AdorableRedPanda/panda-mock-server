@@ -2,9 +2,13 @@ import { WebSocket, WebSocketServer } from 'ws';
 import http from 'http';
 import { RequestLog, WsMessageType } from '../../../types';
 import { WsMessageUtils } from '../../../utils';
-import { WsLogger } from '../../types';
+import { RequestsHandler, WsLogger } from '../../types';
 
-export const startWsServer = (server: http.Server, logsHistory: RequestLog[]): WsLogger => {
+export const startWsServer = (
+    server: http.Server,
+    logsHistory: RequestLog[],
+    mocker: RequestsHandler,
+): WsLogger => {
     const ws_server = new WebSocketServer({ server });
 
     const connections: WebSocket[] = [];
@@ -15,6 +19,8 @@ export const startWsServer = (server: http.Server, logsHistory: RequestLog[]): W
     ws_server.on('connection', (ws) => {
         connections.push(ws);
         ws.send(WsMessageUtils.buildMessageStr('logs', logsHistory.slice().reverse()));
+
+        ws.send(WsMessageUtils.buildMessageStr('mock_update', mocker.getMocksList()));
 
         ws.on('message', (message) => {
             // todo: subscribe to config the mocker here

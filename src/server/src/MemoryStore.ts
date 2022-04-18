@@ -25,7 +25,7 @@ export class MemoryStore implements MocksStore {
 
     public setMock = (req: RequestSignature, pattern: MockPattern) => {
         const others = this.mocks.filter((mock) => !isEqual(mock, req));
-        this.mocks = [...others, { ...req, pattern }];
+        this.mocks = [{ ...req, pattern }, ...others];
     }
 
     public getList = () => this.mocks;

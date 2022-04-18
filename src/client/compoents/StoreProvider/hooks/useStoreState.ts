@@ -4,13 +4,18 @@ import { StoreCtx } from '../types';
 
 export const useStoreState = ():StoreCtx => {
     const [logs, setLogs] = useState<RequestLog[]>([]);
-    const [mocks] = useState<RequestMock[]>([]);
+    const [mocks, setMocks] = useState<RequestMock[]>([]);
 
     const addLogs = (newItems: RequestLog[]) => {
         setLogs((prev) => [...newItems, ...prev]);
     };
 
-    const updateMock = () => null;
+    // todo: remove @ts-ignore
+    // @ts-ignore
+    const updateMock = (type, data) => {
+        console.log(type);
+        setMocks(data);
+    };
 
     return { logs, mocks, addLogs, updateMock };
 };

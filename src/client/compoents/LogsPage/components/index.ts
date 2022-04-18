@@ -1,3 +1,3 @@
-export { LogsList } from './LogsList/LogsList';
+export { LogsList } from './LogsList';
 export { LogsHeader } from './LogsHeader';
 export { TestForm } from './TestForm/TestForm';

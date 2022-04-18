@@ -2,8 +2,11 @@ import { Response } from './Response';
 import { Method } from './Method';
 import { QueryParam } from './QueryParams';
 
-type Timestamp = string;
-type UrlPath = string;
-type QueryParams = QueryParam[];
-
-export type RequestLog<TBody = object> = [Timestamp, Method, UrlPath, QueryParams, TBody, Response<TBody>];
+export interface RequestLog<TBody = object> {
+    timestamp: string;
+    method: Method;
+    path: string;
+    params: QueryParam[];
+    body: TBody;
+    response: Response<TBody>;
+}

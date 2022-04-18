@@ -8,7 +8,14 @@ import { MOCKS_PORT } from '../../constants';
 
 const buildLog = <T>(req: Request<T>, response: Response<T>): RequestLog<T> => {
     const timestamp = (new Date()).toLocaleTimeString();
-    return [timestamp, req.method, req.path, req.queryParams, req.body, response ];
+    return ({
+        timestamp,
+        method: req.method,
+        path: req.path,
+        params: req.queryParams,
+        body: req.body,
+        response
+    });
 };
 
 export const initializeMockServer = (

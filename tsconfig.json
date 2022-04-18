@@ -15,7 +15,8 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "isolatedModules": true
   },
   "types": [
     "chrome"

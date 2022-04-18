@@ -6,4 +6,4 @@ interface Message<Type extends WsMessageType, TBody> {
     body: TBody;
 }
 
-export type WsMessage = Message<'logs', RequestLog[]>;
+export type WsMessage = Message<'logs', RequestLog[]> | Message<'mock_update', unknown>;

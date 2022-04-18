@@ -1,27 +1,19 @@
 import React from 'react';
+import { RequestLog } from '../../../../../types';
+import { getLogKey } from './utils';
+import { Table } from '../../../atoms';
 import { useStore } from '../../../StoreProvider';
-import { TableHeader } from './TableHeader';
-import { Log } from './Log';
-
+import { Config } from './config';
 
 export const LogsList: React.FC = () => {
     const { logs } = useStore();
-
     return (
         <div className="logs_list">
-            <table className="logs_table">
-                <TableHeader />
-                <tbody>
-                    {
-                        logs.map((log, i) => (
-                            <Log
-                                item={log}
-                                key={`${log.path}:${i}`}
-                            />
-                        ))
-                    }
-                </tbody>
-            </table>
+            <Table<RequestLog>
+                columns={Config}
+                selectKey={getLogKey}
+                rows={logs}
+            />
         </div>
     );
 };

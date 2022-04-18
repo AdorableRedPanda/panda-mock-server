@@ -5,50 +5,10 @@
   flex-direction: column;
   align-items: baseline;
 
-
-  .logs_table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
   .logs_list {
     flex-grow: 1;
     overflow: auto;
   }
-
-  .logs_header {
-    border-bottom: 1px solid #24292f;
-  }
-  .cell {
-    text-align: left;
-    padding: 5px 10px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    vertical-align: baseline;
-  }
-  .params {
-    display: flex;
-    flex-direction: row;
-
-    gap: 5px;
-  }
-
-  .expanded {
-    .params {
-      gap: 0;
-      flex-direction: column;
-    }
-    .cell {
-      white-space: break-spaces;
-      word-break: break-all;
-    }
-  }
-
-  .log_row {
-    border-bottom: 1px solid #414952;
-  };
 }
 
 

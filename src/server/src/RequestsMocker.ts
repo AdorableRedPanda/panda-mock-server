@@ -13,6 +13,8 @@ export class RequestsMocker implements RequestsHandler {
     public getResponse = <T>(req: Request<T>): Response<string> => {
         try {
             const mock = this.store.getMock(req);
+            // todo: remove @ts-ignore
+            // @ts-ignore
             return { code: 200, data: mock };
 
         } catch {

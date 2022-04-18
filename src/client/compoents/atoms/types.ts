@@ -8,7 +8,10 @@ export interface ChangeHandler<T = string> {
     value: T;
 }
 
-export type InputProps<T = string> = ChangeHandler<T> & LabelProps;
+export type InputProps<T = string> =
+    ChangeHandler<T> &
+    LabelProps &
+    { placeholder?: string };
 
 export interface SelectInputProps<T extends string = string> extends InputProps<T> {
     options: string[];

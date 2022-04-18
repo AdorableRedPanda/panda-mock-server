@@ -1,3 +1,3 @@
-export { MocksStore } from './MocksStore';
-export { WsLogger } from './WsLogger';
-export { RequestsHandler } from './RequestsHandler';
+export type { MocksStore } from './MocksStore';
+export type { WsLogger } from './WsLogger';
+export type { RequestsHandler } from './RequestsHandler';

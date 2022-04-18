@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Button, JsonInput, MethodSelect, TextareaInput } from '../atoms';
 import { Method } from '../../../types';
 import { TextInput } from '../atoms/TextInput';
-import { useWsSend } from '../StoreProvider';
+import { useStore, useWsSend } from '../StoreProvider';
 
 export const MocksPage: React.FC = () => {
+
+    const { mocks } = useStore();
+    console.log(mocks);
 
     const [method, setMethod] = useState<Method>('GET');
     const [resp, setResp] = useState<object>({});
