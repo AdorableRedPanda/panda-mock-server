@@ -1,6 +1,6 @@
 .app_header {
-  color: var(--primary-bg);
-  background: var(--primary-color);
+  color: var(--light-main);
+  background: var(--dark-main);
   display: flex;
   padding: 10px;
 
@@ -19,15 +19,15 @@
     border-radius: 50%;
 
     &.closed {
-      background-color: crimson;
+      background-color: var(--red);
     }
 
     &.process {
-      background-color: orange;
+      background-color: var(--orange);
     }
 
     &.connected {
-      background-color: cornflowerblue;
+      background-color: var(--blue-1);
     }
   }
 }

@@ -1,9 +1,14 @@
 html {
-  --primary-bg: #fefdff;
-  --primary-color: #24292f;
+  --light-main: #fefdff;
 
-  --primary-button-color: #4267B2;
-  --active-button-color: #263b67;
+  --dark-main: #24292f;
+
+  --blue-1: #4267B2;
+  --blue-2: #263b67;
+
+  --orange: #ffa500;
+
+  --red: #dc1439;
 }
 
 
@@ -13,8 +18,8 @@ html, body {
   height: 100%;
   font-style: normal;
   font-family: 'Nunito', sans-serif;
-  color: var(--primary-color);
-  background: var(--primary-bg);
+  color: var(--dark-main);
+  background: var(--light-main);
 }
 h1, h2, h3, h4, h5, h6, ul, li {
   margin: 0;
