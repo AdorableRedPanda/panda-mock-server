@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, JsonInput, MethodSelect } from '../../../atoms';
-import { FetchArgs } from '../../fetchRequest';
-import { TextInput } from '../../../atoms/TextInput';
-import { MOCKS_PORT } from '../../../../../constants';
+import { FetchArgs } from '../fetchRequest';
+import { MOCKS_PORT } from '../../../../constants';
+import { TextInput } from '../../atoms/TextInput';
+import { Button, JsonInput, MethodSelect } from '../../atoms';
 
 interface Props {
     handleSendClick: (form: FetchArgs) => void;

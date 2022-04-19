@@ -1,3 +1,3 @@
 export { StoreProvider } from './StoreProvider';
-export { useWsSend } from './WsProvider';
+export { useWsConnection } from './WsProvider';
 export { useStore } from './hooks';

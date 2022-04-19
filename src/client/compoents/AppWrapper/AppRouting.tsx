@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes } from 'react-router-dom';
-import { Navigation } from './components/Navigation';
+import { AppHeader } from './components/AppHeader/AppHeader';
 
 export const AppRouting: React.FC = ({ children }) => (
     <>
-        <Navigation />
+        <AppHeader />
         <div className="content">
             <Routes>
                 {children}

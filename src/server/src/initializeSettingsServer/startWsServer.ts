@@ -24,7 +24,15 @@ export const startWsServer = (
 
         ws.on('message', (message) => {
             // todo: subscribe to config the mocker here
-            console.log('\x1b[36m%s\x1b[0m', `ws message: ${ message.toString()}`);
+            try {
+                const messageStr = message.toString();
+                const messageObj = JSON.parse(messageStr);
+                mocker.setMock(messageObj.body);
+                sendToAll('mock_update', mocker.getMocksList());
+                console.log('\x1b[36m%s\x1b[0m', `mock request: ${ JSON.stringify(messageObj.body) }`);
+            } catch (e) {
+                console.error(e);
+            }
         });
     });
 

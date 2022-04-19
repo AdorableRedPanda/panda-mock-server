@@ -1,0 +1,42 @@
+.app_header {
+  color: var(--primary-bg);
+  background: var(--primary-color);
+  display: flex;
+  padding: 10px;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ws_state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .indicator {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+
+    &.closed {
+      background-color: crimson;
+    }
+
+    &.process {
+      background-color: orange;
+    }
+
+    &.connected {
+      background-color: cornflowerblue;
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+
+  a {
+    color: inherit;
+  }
+}

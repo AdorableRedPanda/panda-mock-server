@@ -10,5 +10,3 @@ export const getLogKey = (
 export const paramsResolver: Resolver<QueryParam[]> = (params) => (
     params.map(([key, value]) =>`${key}=${value}`).join(', ')
 );
-
-export const anyResolver = (obj: unknown) => JSON.stringify(obj);

@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { WsContext } from './WsContext';
-import { useWsConnection } from './hooks/useWsConnection';
+import { useWebSocket } from './hooks/useWebSocket';
 import { WsMessage } from '../../../../types';
 
 
@@ -9,12 +9,10 @@ interface Props {
 }
 
 export const WsProvider: React.FC<Props> = ({ children, messageHandler }) => {
-    const send = useWsConnection(messageHandler);
-
-    const value = useMemo(() => ({ send }), [send]);
+    const contextValue = useWebSocket(messageHandler);
 
     return (
-        <WsContext.Provider value={value}>
+        <WsContext.Provider value={contextValue}>
             {children}
         </WsContext.Provider>
     );

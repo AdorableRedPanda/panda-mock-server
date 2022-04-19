@@ -1,6 +1,7 @@
 import { ColumnsConfig } from '../../../atoms';
 import { RequestLog } from '../../../../../types';
-import { anyResolver, paramsResolver } from './utils';
+import { paramsResolver } from './utils';
+import { anyResolver } from '../../../anyResolver';
 
 export const Config: ColumnsConfig<RequestLog> = [
     { label: 'Timestamp', width: '10%', key: 'timestamp' },
