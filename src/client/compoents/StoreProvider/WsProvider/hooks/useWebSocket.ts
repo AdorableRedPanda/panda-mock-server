@@ -15,7 +15,7 @@ export const useWebSocket = (
 
     const onMessage = useCallback((ev: MessageEvent) => {
         try {
-            handleMessage(WsMessageUtils.parse(ev.data));
+            handleMessage(JSON.parse(ev.data));
         } catch (error) {
             console.error(`WS message error:${ error}`);
         }

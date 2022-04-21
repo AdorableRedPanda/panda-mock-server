@@ -1,1 +1,1 @@
-export type WsMessageType = 'logs' | 'mock_update' | 'test_message';
+export type WsMessageType = 'requests' | 'settings' | 'mock_upsert';

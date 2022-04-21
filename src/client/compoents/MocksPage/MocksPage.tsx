@@ -6,9 +6,9 @@ import { RequestMock } from '../../../types';
 
 export const MocksPage: React.FC = () => {
 
-    const send = useWsConnection();
+    const { send } = useWsConnection();
 
-    const onSubmit = (mock: RequestMock) => send('mock_update', mock);
+    const onSubmit = (mock: RequestMock) => send('mock_upsert', mock);
 
     return (
         <div className="mocks_page">

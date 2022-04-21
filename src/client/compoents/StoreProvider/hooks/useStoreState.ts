@@ -1,21 +1,16 @@
 import { useState } from 'react';
-import { RequestMock, RequestLog } from '../../../../types';
+import { RequestLog } from '../../../../types';
 import { StoreCtx } from '../types';
+import { MockServerSettings } from '../../../../server/types';
 
 export const useStoreState = ():StoreCtx => {
     const [logs, setLogs] = useState<RequestLog[]>([]);
-    const [mocks, setMocks] = useState<RequestMock[]>([]);
+    const [settings, setSettings] = useState<MockServerSettings>({ mocks: [] });
 
     const addLogs = (newItems: RequestLog[]) => {
         setLogs((prev) => [...newItems, ...prev]);
     };
 
-    // todo: remove @ts-ignore
-    // @ts-ignore
-    const updateMock = (type, data) => {
-        console.log(type);
-        setMocks(data);
-    };
 
-    return { logs, mocks, addLogs, updateMock };
+    return { logs, mocks: settings.mocks, addLogs, setSettings };
 };

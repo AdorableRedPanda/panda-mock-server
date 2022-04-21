@@ -1,6 +1,6 @@
 import { WsMessage, WsMessageType } from '../types';
 
-const WsMessageTypes: WsMessageType[] = ['logs', 'test_message', 'mock_update'];
+const WsMessageTypes: WsMessageType[] = ['requests'];
 
 const isWsMessageType = (type: unknown): type is WsMessageType => (
     typeof type === 'string' && WsMessageTypes.includes(type as WsMessageType)

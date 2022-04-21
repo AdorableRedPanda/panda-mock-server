@@ -1,4 +1,5 @@
-import { MockActionType, RequestMock, RequestLog } from '../../../types';
+import { RequestMock, RequestLog } from '../../../types';
+import { MockServerSettings } from '../../../server/types';
 
 export interface StoreState {
     logs: RequestLog[];
@@ -6,7 +7,7 @@ export interface StoreState {
 }
 
 interface StoreUpdates extends AddLogs {
-    updateMock: (type: MockActionType, newValue: RequestMock | null) => void;
+    setSettings: (next: MockServerSettings) => void;
 }
 
 export interface AddLogs {

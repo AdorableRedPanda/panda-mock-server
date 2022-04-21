@@ -7,6 +7,5 @@ export const getLogKey = (
     index: number,
 ): string => `${timestamp}_${method}_${path}_${index}`;
 
-export const paramsResolver: Resolver<QueryParam[]> = (params) => (
-    params.map(([key, value]) =>`${key}=${value}`).join(', ')
-);
+export const paramsResolver: Resolver<QueryParam[]> = (params) => ('');
+    // params.map(([key, value]) =>`${key}=${value}`).join(', ')

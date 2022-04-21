@@ -5,20 +5,18 @@ import { WsProvider } from './WsProvider';
 import { WsMessage } from '../../../types';
 
 export const StoreProvider: React.FC = ({ children }) => {
-    const { logs, mocks, addLogs, updateMock } = useStoreState();
+    const { logs, mocks, addLogs, setSettings } = useStoreState();
 
     const onMessage: (message: WsMessage) => void = useCallback(({ type, body }) => {
         switch (type){
-            case 'logs':
+            case 'requests':
                 addLogs(body);
                 break;
-            case 'mock_update':
-                // todo: remove @ts-ignore
-                // @ts-ignore
-                updateMock('upsert', body);
+            case 'settings':
+                setSettings(body);
                 break;
             default:
-                console.log('unknown ws message type');
+                console.log('default', type, body);
         }
     }, [addLogs]);
 

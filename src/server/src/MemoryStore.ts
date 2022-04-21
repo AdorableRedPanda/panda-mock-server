@@ -1,32 +1,36 @@
-import { RequestSignature, MockPattern, RequestMock } from '../../types';
-import { MocksStore } from '../types';
+import { PatternsStore } from '../types';
+import { MockPattern, RequestMock, RequestSignature } from '../../types';
 
 const isEqual = (req: RequestSignature, mock: RequestSignature): boolean => mock.method === req.method && mock.path === req.path;
 
-export class MemoryStore implements MocksStore {
-    private mocks: RequestMock[] = [
-        { path:'/', method: 'GET', pattern: { 'hi from': 'mocks' } }
+const removeFrom = <T extends RequestSignature>(req: RequestSignature, mocks: T[]): T[] => mocks.filter((mock) => !isEqual(mock, req));
+
+const upsertIn = ({ path, method, pattern }: RequestMock, mocks: RequestMock[]): RequestMock[] => {
+    const others = removeFrom({ path, method }, mocks);
+    return [{ path, method, pattern }, ...others];
+};
+
+export class MemoryStore implements PatternsStore {
+    #mocks: RequestMock[] = [
+        { path:'/1', method: 'GET', pattern: { 'mocks': 'hi there!' } },
+        { path:'/2', method: 'GET', pattern: { 'mocks': 'hello world' } },
+        { path:'/3', method: 'GET', pattern: { 'mocks': 'hi!' } }
     ];
 
-    constructor() {
-        this.getMock.bind(this);
-        this.setMock.bind(this);
-        this.getList.bind(this);
+    getList(): RequestMock[] {
+        return this.#mocks;
     }
 
-    public getMock = (req: RequestSignature): MockPattern => {
-        const match = this.mocks.filter((mock) => isEqual(mock, req));
-        if (!match.length) {
-            throw new Error(`${req.method}:${req.path} is not mocked`);
-        }
-
-        return match[0].pattern;
+    getMock(req: RequestSignature): MockPattern {
+        return this.#mocks.filter((mock) => isEqual(mock, req))[0].pattern;
     }
 
-    public setMock = (req: RequestSignature, pattern: MockPattern) => {
-        const others = this.mocks.filter((mock) => !isEqual(mock, req));
-        this.mocks = [{ ...req, pattern }, ...others];
+    upsertMock(mock: RequestMock) {
+        this.#mocks = upsertIn(mock, this.#mocks);
     }
 
-    public getList = () => this.mocks;
+    removeMock(req: RequestSignature) {
+        this.#mocks = removeFrom(req, this.#mocks);
+    }
+
 }
