@@ -1,16 +1,18 @@
-import { WebSocket, WebSocketServer } from 'ws';
+import { parseWsMessage } from '../../../utils';
+import { WebSocketServer, WebSocket } from 'ws';
+import { isClientMessage } from '../../../utils/isClientMessage';
+import { WsServer } from './type';
+import { WsMessage } from '../../../types';
+import { MessagesController } from '../MainController';
 import { startStaticServer } from './startStaticServer';
-import { WsServer } from '../types';
-import { WsMessage } from '../../types';
-import { MainController } from './MainController';
-import { parseWsMessage } from '../../utils';
-import { isClientMessage } from '../../utils/isClientMessage';
+
+
 
 export class WsListener implements WsServer {
     #httpServer = startStaticServer();
     #connections: WebSocket[] = [];
 
-    start (controller: MainController) {
+    start (controller: MessagesController) {
         const ws_server = new WebSocketServer({ server: this.#httpServer });
 
         controller.subscribeOnPublishing((message) => this.#sendToAll(message));

@@ -1,9 +1,11 @@
-import { LogsProvider, ConfigService, Func } from '../types';
-import { WsMessage } from '../../types';
-import { ClientMessage } from '../../types/WsMessage';
-import { buildWsMessage } from '../../utils';
+import { buildWsMessage } from '../../../utils';
+import { Func, WsMessage } from '../../../types';
+import { ClientMessage } from '../../../types/WsMessage';
+import { LogsProvider } from '../LoggingService';
+import { MessagesController } from './types';
+import { ConfigService } from '../SettingsService';
 
-export class MainController {
+export class MainController implements MessagesController {
     #logsService: LogsProvider;
     #settingsService: ConfigService;
 

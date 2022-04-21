@@ -1,11 +1,13 @@
-import { ConfigService, PatternsStore, MockServerSettings } from '../types';
-import { RequestMock } from '../../types';
-import { ClientMsgType } from '../../types/WsMessageType';
+import { ConfigService } from './types';
+import { ClientMsgType } from '../../../types/WsMessageType';
+import { MockServerSettings, RequestMock } from '../../../types';
+import { MocksStore } from '../MemoryStore';
+
 
 export class SettingsService implements ConfigService {
-    #store: PatternsStore;
+    #store: MocksStore;
 
-    constructor(store: PatternsStore) {
+    constructor(store: MocksStore) {
         this.#store = store;
     }
 

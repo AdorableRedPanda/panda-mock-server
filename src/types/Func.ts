@@ -1,0 +1,1 @@
+export type Func<TArg, TRes = void> = (arg: TArg) => TRes;

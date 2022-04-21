@@ -1,16 +1,18 @@
-import { PatternsStore, RequestHandler, RequestLogger } from '../types';
-import { Request, Response } from '../../types';
+import { MocksStore } from '../MemoryStore';
+import { RequestHandler } from './types';
+import { RequestLogger } from '../LoggingService';
+import { RequestExpress, Response } from '../../../types';
 
 export class MockService implements RequestHandler {
     #logger: RequestLogger;
-    #store: PatternsStore;
+    #store: MocksStore;
     
-    constructor(logger: RequestLogger, store: PatternsStore) {
+    constructor(logger: RequestLogger, store: MocksStore) {
         this.#logger = logger;
         this.#store = store;
     }
 
-    onRequest(req: Request): Response {
+    onRequest(req: RequestExpress): Response {
         let res;
         try {
             const pattern = this.#store.getMock(req);

@@ -12,7 +12,7 @@ export const MockForm: React.FC<Props> = ({ onSubmit }) => {
     const [response, setResp] = useState<object>({});
     const [path, setPath] = useState('');
 
-    const onClick = () => onSubmit({ method, path: `/${path}`, pattern: JSON.stringify(response) });
+    const onClick = () => onSubmit({ method, path: `/${path}`, variables: [], pattern: JSON.stringify(response) });
 
     return (
         <form className="mock form">

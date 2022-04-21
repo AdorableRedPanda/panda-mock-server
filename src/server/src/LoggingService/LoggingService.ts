@@ -1,9 +1,9 @@
-import { Func, LogsProvider, RequestLogger } from '../types';
-import { RequestLog, Request, Response } from '../../types';
+import { LogsProvider, RequestLogger } from './types';
+import { RequestLog, Response, Func, RequestExpress } from '../../../types';
 
-const buildRequestLog = (req: Request, response: Response): RequestLog => {
+const buildRequestLog = ({ body, query, method, path }: RequestExpress, response: Response): RequestLog => {
     const timestamp = (new Date()).toLocaleTimeString();
-    return ({ ...req, timestamp, response });
+    return ({ body, query, method, path, timestamp, response });
 };
 
 export class LoggingService implements RequestLogger, LogsProvider {
@@ -14,7 +14,7 @@ export class LoggingService implements RequestLogger, LogsProvider {
         return this.#logs;
     }
 
-    onRequest([req, res]: [Request, Response]): void {
+    onRequest([req, res]: [RequestExpress, Response]): void {
         const log = buildRequestLog(req, res);
         this.#logs.push(log);
         this.#subscribers.forEach(cb => cb(log));

@@ -1,5 +1,4 @@
-import { RequestMock, RequestLog } from '../../../types';
-import { MockServerSettings } from '../../../server/types';
+import { RequestMock, RequestLog, MockServerSettings } from '../../../types';
 
 export interface StoreState {
     logs: RequestLog[];

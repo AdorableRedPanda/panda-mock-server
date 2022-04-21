@@ -1,13 +1,8 @@
-import express, { Request as ExpressRequest } from 'express';
-import cors from 'cors';
+import express from 'express';
 import bodyParser from 'body-parser';
-import { MOCKS_PORT } from '../../constants';
-import { RequestHandler } from '../types';
-import { Method, Request } from '../../types';
-
-const getPrepareRequest = ({ method, body, path, query }: ExpressRequest): Request => (
-    { method: method as Method, path, params: query || {}, body: body || {} }
-);
+import { MOCKS_PORT } from '../../../constants';
+import { RequestHandler } from '../MockService/types';
+import cors from 'cors';
 
 export const startHttpListener = (handler: RequestHandler) => {
     const app = express();
@@ -17,8 +12,9 @@ export const startHttpListener = (handler: RequestHandler) => {
     app.use(bodyParser.json());
 
     app.all('/*', (req, res) => {
+        console.log(req.method);
         try {
-            const mocked = handler.onRequest(getPrepareRequest(req));
+            const mocked = handler.onRequest(req);
             res.status(mocked.code).send(mocked.data);
         } catch (e) {
             res.status(500).send(`cannot handle request: ${e}`);

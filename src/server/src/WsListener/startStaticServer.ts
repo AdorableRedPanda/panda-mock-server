@@ -1,7 +1,8 @@
 import http from 'http';
 import express from 'express';
 import path from 'path';
-import { WS_PORT } from '../../constants';
+import { WS_PORT } from '../../../constants';
+
 
 export const startStaticServer = (): http.Server => {
     const app = express();

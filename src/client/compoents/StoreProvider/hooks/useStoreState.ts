@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { RequestLog } from '../../../../types';
+import { MockServerSettings, RequestLog } from '../../../../types';
 import { StoreCtx } from '../types';
-import { MockServerSettings } from '../../../../server/types';
+
 
 export const useStoreState = ():StoreCtx => {
     const [logs, setLogs] = useState<RequestLog[]>([]);
