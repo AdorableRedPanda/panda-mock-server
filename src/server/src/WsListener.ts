@@ -3,11 +3,11 @@ import { startStaticServer } from './startStaticServer';
 import { WsServer } from '../types';
 import { WsMessage } from '../../types';
 import { MainController } from './MainController';
-
+import { parseWsMessage } from '../../utils';
+import { isClientMessage } from '../../utils/isClientMessage';
 
 export class WsListener implements WsServer {
     #httpServer = startStaticServer();
-
     #connections: WebSocket[] = [];
 
     start (controller: MainController) {
@@ -18,12 +18,15 @@ export class WsListener implements WsServer {
         ws_server.on('connection', (ws) => {
             this.#connections.push(ws);
 
-            controller.handleConnection(ws);
+            controller.handleConnection((message) => WsListener.sendTo(message, ws));
 
-            ws.on('message', (message) => {
+            ws.on('message', (rawMessage) => {
                 try {
-                    // todo: parsing in utils
-                    const messageObj = JSON.parse(message.toString()) as WsMessage;
+                    const messageObj = parseWsMessage(rawMessage.toString());
+                    if (!isClientMessage(messageObj)) {
+                        console.log(`A received message has incorrect type: ${messageObj.type}`);
+                        return;
+                    }
                     controller.handleMessage(messageObj);
                 } catch (e) {
                     console.log(e);
@@ -36,8 +39,12 @@ export class WsListener implements WsServer {
         });
     }
 
+    static sendTo(message: WsMessage, ws: WebSocket) {
+        ws.send(JSON.stringify(message));
+    }
+
     #sendToAll(message: WsMessage) {
-        this.#connections.forEach(ws => ws.send(JSON.stringify(message)));
+        this.#connections.forEach((ws) => WsListener.sendTo(message, ws));
     }
 
 }

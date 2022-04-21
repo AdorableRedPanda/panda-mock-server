@@ -5,6 +5,6 @@ export type { MockPattern } from './MockPattern';
 export type { Method } from './Method';
 export type { Request } from './Request';
 export type { RequestSignature } from './RequestSignature';
-export type { WsMessage } from './WsMessage';
 export type { Response } from './Response';
 export type { WsMessageType } from './WsMessageType';
+export type { WsMessage } from './WsMessage';

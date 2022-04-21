@@ -10,13 +10,13 @@ export class MockService implements RequestHandler {
         this.#store = store;
     }
 
-    onRequest(req: Request): Response<any> {
+    onRequest(req: Request): Response {
         let res;
         try {
             const pattern = this.#store.getMock(req);
-            res = { code: 200, data: pattern };
+            res = { code: 200, data: { pattern } };
         } catch (e) {
-            res = { code: 404, data: 'request is not mocked' };
+            res = { code: 404, data: { message: 'request is not mocked' } };
         }
 
         this.#logger.onRequest([req, res]);

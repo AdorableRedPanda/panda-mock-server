@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { WsMessageUtils } from '../../../../../utils';
 import { WsMessage } from '../../../../../types';
 import { ConnectionState, WsCtx } from '../types';
 import { WS_PORT } from '../../../../../constants';
+import { buildWsMessage } from '../../../../../utils';
 
 const wsUrl = `ws://localhost:${WS_PORT}/ws`;
 
@@ -40,7 +40,7 @@ export const useWebSocket = (
     }, [socket]);
 
     const send = useCallback(
-        (type, body) => socket.send(WsMessageUtils.buildMessageStr(type, body)),
+        (type, body) => socket.send(JSON.stringify(buildWsMessage(type, body))),
         []
     );
 

@@ -1,7 +1,7 @@
 import { RequestSignature } from './RequestSignature';
-import { QueryParam } from './QueryParams';
+import { ParsedQs } from 'qs';
 
 export interface Request<T = object> extends RequestSignature {
     body: T;
-    queryParams: QueryParam[];
+    params: ParsedQs;
 }

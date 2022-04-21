@@ -1,5 +1,6 @@
 import { ConfigService, PatternsStore, MockServerSettings } from '../types';
-import { RequestMock, RequestSignature } from '../../types';
+import { RequestMock } from '../../types';
+import { ClientMsgType } from '../../types/WsMessageType';
 
 export class SettingsService implements ConfigService {
     #store: PatternsStore;
@@ -8,12 +9,14 @@ export class SettingsService implements ConfigService {
         this.#store = store;
     }
 
-    removeMock(signature: RequestSignature) {
-        return this.#store.removeMock(signature);
-    }
-
-    upsertMock(mock: RequestMock) {
-        return this.#store.upsertMock(mock);
+    mocksUpdate([type, mock]: [ClientMsgType, RequestMock]) {
+        switch (type) {
+            case 'mock_delete':
+                this.#store.removeMock(mock);
+                break;
+            case 'mock_upsert':
+                this.#store.upsertMock(mock);
+        }
     }
 
     getState(): MockServerSettings {

@@ -1,1 +1,2 @@
-export { WsMessageUtils } from './WsMessageUtils';
+export { buildWsMessage } from './buildWsMessage';
+export { parseWsMessage } from './parseWsMessage';

@@ -1,6 +1,7 @@
 import { LogsProvider, ConfigService, Func } from '../types';
 import { WsMessage } from '../../types';
-import { WebSocket } from 'ws';
+import { ClientMessage } from '../../types/WsMessage';
+import { buildWsMessage } from '../../utils';
 
 export class MainController {
     #logsService: LogsProvider;
@@ -15,19 +16,22 @@ export class MainController {
         this.#logsService.subscribe((log) => this.#sendAll({ type: 'requests', body: [log] }));
     }
 
-    handleMessage({ type, body }: WsMessage): void {
+    handleMessage({ type, body }: ClientMessage): void {
         switch (type) {
+            case 'mock_delete':
             case 'mock_upsert':
-                this.#settingsService.upsertMock(body);
+                this.#settingsService.mocksUpdate([type, body]);
                 this.#sendAll({ type: 'settings', body: this.#settingsService.getState() });
+                break;
             default:
+                console.log(`default: ${type}`);
                 return;
         }
     }
 
-    handleConnection(ws: WebSocket) {
-        ws.send(JSON.stringify({ type: 'requests', body: this.#logsService.getHistory() }));
-        ws.send(JSON.stringify({ type: 'settings', body: this.#settingsService.getState() }));
+    handleConnection(send: Func<WsMessage>) {
+        send(buildWsMessage('requests', this.#logsService.getHistory()));
+        send(buildWsMessage('settings', this.#settingsService.getState()));
     }
 
     subscribeOnPublishing(send: Func<WsMessage>) {

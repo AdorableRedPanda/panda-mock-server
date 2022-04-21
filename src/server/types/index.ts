@@ -1,5 +1,6 @@
 import { MockPattern, Request, RequestLog, RequestMock, RequestSignature, Response } from '../../types';
 import { MainController } from '../src/MainController';
+import { ClientMsgType } from '../../types/WsMessageType';
 
 
 export type Func<TArg, TRes = void> = (arg: TArg) => TRes;
@@ -31,8 +32,7 @@ export interface MockServerSettings {
 }
 
 export interface ConfigService {
-    upsertMock: Func<RequestMock>;
-    removeMock: Func<RequestSignature>;
+    mocksUpdate: Func<[ClientMsgType, RequestMock]>
     getState: GetterFunc<MockServerSettings>;
 }
 

@@ -2,12 +2,12 @@ import React, { useCallback, useMemo } from 'react';
 import { StoreContext } from './StoreContext';
 import { useStoreState } from './hooks';
 import { WsProvider } from './WsProvider';
-import { WsMessage } from '../../../types';
+import { ServerMessage } from '../../../types/WsMessage';
 
 export const StoreProvider: React.FC = ({ children }) => {
     const { logs, mocks, addLogs, setSettings } = useStoreState();
 
-    const onMessage: (message: WsMessage) => void = useCallback(({ type, body }) => {
+    const onMessage: (message: ServerMessage) => void = useCallback(({ type, body }) => {
         switch (type){
             case 'requests':
                 addLogs(body);
@@ -16,7 +16,7 @@ export const StoreProvider: React.FC = ({ children }) => {
                 setSettings(body);
                 break;
             default:
-                console.log('default', type, body);
+                console.log('incorrect message: ', type, body);
         }
     }, [addLogs]);
 
