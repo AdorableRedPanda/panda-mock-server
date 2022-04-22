@@ -1,5 +1,4 @@
-import { WsMessageType } from '../types';
-import { ServerMessage, WsMessage } from '../types/WsMessage';
+import { WsMessageType, ServerMessage, WsMessage } from '../types';
 import { ServerMsgTypes } from '../constants';
 
 export const isServerMessage = (msg: WsMessage): msg is ServerMessage => (

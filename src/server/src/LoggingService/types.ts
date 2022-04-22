@@ -1,7 +1,7 @@
-import { Func, GetterFunc, RequestExpress, RequestLog, Response } from '../../../types';
+import { Func, GetterFunc, RequestInternal, RequestLog, ResponseInternal } from '../../../types';
 
 export interface RequestLogger {
-    onRequest: Func<[RequestExpress, Response]>;
+    onRequest: Func<[RequestInternal, ResponseInternal]>;
 }
 
 export interface LogsProvider {

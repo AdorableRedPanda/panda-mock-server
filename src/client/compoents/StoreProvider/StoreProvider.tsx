@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { StoreContext } from './StoreContext';
 import { useStoreState } from './hooks';
 import { WsProvider } from './WsProvider';
-import { ServerMessage } from '../../../types/WsMessage';
+import { ServerMessage } from '../../../types';
 
 export const StoreProvider: React.FC = ({ children }) => {
     const { logs, mocks, addLogs, setSettings } = useStoreState();

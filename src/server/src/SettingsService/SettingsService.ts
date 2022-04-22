@@ -1,7 +1,7 @@
 import { ConfigService } from './types';
-import { ClientMsgType } from '../../../types/WsMessageType';
-import { MockServerSettings, RequestMock } from '../../../types';
+import { ClientMsgType, MockServerSettings, ResponseMockDto } from '../../../types';
 import { MocksStore } from '../MemoryStore';
+import { buildMock } from './utils/buildMock';
 
 
 export class SettingsService implements ConfigService {
@@ -11,7 +11,8 @@ export class SettingsService implements ConfigService {
         this.#store = store;
     }
 
-    mocksUpdate([type, mock]: [ClientMsgType, RequestMock]) {
+    mocksUpdate([type, mockDto]: [ClientMsgType, ResponseMockDto]) {
+        const mock = buildMock(mockDto);
         switch (type) {
             case 'mock_delete':
                 this.#store.removeMock(mock);

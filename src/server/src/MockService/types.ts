@@ -1,5 +1,5 @@
-import { Func, RequestExpress, Response } from '../../../types';
+import { Func, RequestInternal, ResponseInternal } from '../../../types';
 
 export interface RequestHandler {
-    onRequest: Func<RequestExpress, Response>;
+    onRequest: Func<RequestInternal, ResponseInternal>;
 }

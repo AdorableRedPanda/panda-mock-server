@@ -1,10 +1,5 @@
 import { LogsProvider, RequestLogger } from './types';
-import { RequestLog, Response, Func, RequestExpress } from '../../../types';
-
-const buildRequestLog = ({ body, query, method, path }: RequestExpress, response: Response): RequestLog => {
-    const timestamp = (new Date()).toLocaleTimeString();
-    return ({ body, query, method, path, timestamp, response });
-};
+import { RequestLog, ResponseInternal, Func, RequestInternal } from '../../../types';
 
 export class LoggingService implements RequestLogger, LogsProvider {
     #logs: RequestLog[] = [];
@@ -14,8 +9,8 @@ export class LoggingService implements RequestLogger, LogsProvider {
         return this.#logs;
     }
 
-    onRequest([req, res]: [RequestExpress, Response]): void {
-        const log = buildRequestLog(req, res);
+    onRequest([req, response]: [RequestInternal, ResponseInternal]): void {
+        const log = { ...req, response };
         this.#logs.push(log);
         this.#subscribers.forEach(cb => cb(log));
     }

@@ -1,3 +1,1 @@
-import { RequestExpress } from './index';
-
-export type Method = RequestExpress['method'];
+export type Method = 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE' ;

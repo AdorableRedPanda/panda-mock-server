@@ -1,8 +1,8 @@
-import { Func, GetterFunc, RequestExpress, RequestMock, RequestSignature } from '../../../types';
+import { Func, GetterFunc, RequestInternal, ResponseMock, RequestSignature } from '../../../types';
 
 export interface MocksStore {
-    getMock: Func<RequestExpress, RequestMock>;
-    getList: GetterFunc<RequestMock[]>;
-    upsertMock: Func<RequestMock>;
+    getMock: Func<RequestInternal, ResponseMock | undefined>;
+    getList: GetterFunc<ResponseMock[]>;
+    upsertMock: Func<ResponseMock>;
     removeMock: Func<RequestSignature>;
 }

@@ -1,7 +1,6 @@
-import { Func, GetterFunc, MockServerSettings, RequestMock } from '../../../types';
-import { ClientMsgType } from '../../../types/WsMessageType';
+import { Func, GetterFunc, MockServerSettings, ClientMsgType, ResponseMockDto } from '../../../types';
 
 export interface ConfigService {
-    mocksUpdate: Func<[ClientMsgType, RequestMock]>
+    mocksUpdate: Func<[ClientMsgType, ResponseMockDto]>
     getState: GetterFunc<MockServerSettings>;
 }

@@ -1,3 +1,3 @@
-import { RequestMock } from '../../../../types';
+import { ResponseMock } from '../../../../types';
 
-export const getMockKey = ({ method, path }: RequestMock): string => `${method}_${path}`;
+export const getMockKey = ({ method, path }: ResponseMock): string => `${method}_${path}`;

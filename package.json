@@ -1,6 +1,6 @@
 {
   "name": "panda-mock-server",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "simple app to mock requests",
   "main": "index.js",
   "scripts": {
@@ -47,7 +47,8 @@
     "webpack-cli": "4.9.2",
     "utf-8-validate": "5.0.9",
     "bufferutil": "4.0.6",
-    "ws": "8.5.0"
+    "ws": "8.5.0",
+    "red-panda-utils": "1.0.36"
   },
   "devDependencies": {
     "@babel/preset-react": "7.16.7",

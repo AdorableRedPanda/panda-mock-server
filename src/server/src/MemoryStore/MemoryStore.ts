@@ -1,23 +1,19 @@
-import { RequestMock, RequestSignature } from '../../../types';
+import { ResponseMock, RequestSignature } from '../../../types';
 import { MocksStore } from './MocksStore';
-import { isEqual, removeFrom, upsertIn } from './utils';
+import { isMatch, removeFrom, upsertIn } from './utils';
 
 export class MemoryStore implements MocksStore {
-    #mocks: RequestMock[] = [
-        { path:'/1', method: 'GET', pattern: 'hi there!', variables: [] },
-        { path:'/2', method: 'GET', pattern: 'hello world', variables: [] },
-        { path:'/3', method: 'GET', pattern: 'hi!', variables: [] }
-    ];
+    #mocks: ResponseMock[] = [];
 
-    getList(): RequestMock[] {
+    getList(): ResponseMock[] {
         return this.#mocks;
     }
 
-    getMock(req: RequestSignature): RequestMock {
-        return this.#mocks.filter((mock) => isEqual(mock, req))[0];
+    getMock(req: RequestSignature): ResponseMock | undefined {
+        return this.#mocks.find((mock) => isMatch(mock, req));
     }
 
-    upsertMock(mock: RequestMock) {
+    upsertMock(mock: ResponseMock) {
         this.#mocks = upsertIn(mock, this.#mocks);
     }
 

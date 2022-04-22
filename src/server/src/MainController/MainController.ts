@@ -1,6 +1,5 @@
 import { buildWsMessage } from '../../../utils';
-import { Func, WsMessage } from '../../../types';
-import { ClientMessage } from '../../../types/WsMessage';
+import { Func, WsMessage, ClientMessage } from '../../../types';
 import { LogsProvider } from '../LoggingService';
 import { MessagesController } from './types';
 import { ConfigService } from '../SettingsService';

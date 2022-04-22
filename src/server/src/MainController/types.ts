@@ -1,5 +1,4 @@
-import { Func, WsMessage } from '../../../types';
-import { ClientMessage } from '../../../types/WsMessage';
+import { Func, WsMessage, ClientMessage } from '../../../types';
 
 export interface MessagesController {
     handleMessage: Func<ClientMessage>;

@@ -1,5 +1,5 @@
-import { RequestMock } from './RequestMock';
+import { ResponseMock } from './ResponseMock';
 
 export interface MockServerSettings {
-    mocks: RequestMock[];
+    mocks: ResponseMock[];
 }

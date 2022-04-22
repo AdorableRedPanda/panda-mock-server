@@ -1,8 +1,8 @@
-import { RequestMock, RequestLog, MockServerSettings } from '../../../types';
+import { ResponseMock, RequestLog, MockServerSettings } from '../../../types';
 
 export interface StoreState {
     logs: RequestLog[];
-    mocks: RequestMock[];
+    mocks: ResponseMock[];
 }
 
 interface StoreUpdates extends AddLogs {

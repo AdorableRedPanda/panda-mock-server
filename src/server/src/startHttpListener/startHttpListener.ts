@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { MOCKS_PORT } from '../../../constants';
 import { RequestHandler } from '../MockService/types';
 import cors from 'cors';
+import { toInternal } from './toInternal';
 
 export const startHttpListener = (handler: RequestHandler) => {
     const app = express();
@@ -12,9 +13,8 @@ export const startHttpListener = (handler: RequestHandler) => {
     app.use(bodyParser.json());
 
     app.all('/*', (req, res) => {
-        console.log(req.method);
         try {
-            const mocked = handler.onRequest(req);
+            const mocked = handler.onRequest(toInternal(req));
             res.status(mocked.code).send(mocked.data);
         } catch (e) {
             res.status(500).send(`cannot handle request: ${e}`);

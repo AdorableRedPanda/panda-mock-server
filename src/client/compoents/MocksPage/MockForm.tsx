@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Method, RequestMock } from '../../../types';
+import { Method, ResponseMockDto } from '../../../types';
 import { TextInput } from '../atoms/TextInput';
 import { Button, JsonInput, MethodSelect } from '../atoms';
 
 interface Props {
-    onSubmit: (mock: RequestMock) => void;
+    onSubmit: (mock: ResponseMockDto) => void;
 }
 
 export const MockForm: React.FC<Props> = ({ onSubmit }) => {
@@ -12,7 +12,7 @@ export const MockForm: React.FC<Props> = ({ onSubmit }) => {
     const [response, setResp] = useState<object>({});
     const [path, setPath] = useState('');
 
-    const onClick = () => onSubmit({ method, path: `/${path}`, variables: [], pattern: JSON.stringify(response) });
+    const onClick = () => onSubmit({ code: 200, method, path: `/${path}`, selectorsMap: {}, template: response });
 
     return (
         <form className="mock form">
