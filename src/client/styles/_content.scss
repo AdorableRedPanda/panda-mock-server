@@ -6,15 +6,20 @@
   align-items: baseline;
 }
 
-.title {
-  display: flex;
-  justify-content: flex-start;
-  margin: 10px;
-  align-items: center;
-}
-
 .scroll-container {
   flex-grow: 1;
   overflow: auto;
   margin: 0 10px;
+}
+
+.page_header {
+  display: flex;
+  align-items: center;
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+    align-items: center;
+  }
 }

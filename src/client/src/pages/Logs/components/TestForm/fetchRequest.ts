@@ -1,6 +1,5 @@
-import { Method } from '../../../../types';
-import { MOCKS_PORT } from '../../../../constants';
-
+import { Method } from '../../../../../../types';
+import { MOCKS_PORT } from '../../../../../../constants';
 
 export interface FetchArgs {
     url: string;

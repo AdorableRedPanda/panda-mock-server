@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const PageHeader: React.FC<Props> = ({ title, children }) => (
-    <div className="flex">
+    <div className="page_header">
         <div className="title">
             <h2>{title}</h2>
         </div>

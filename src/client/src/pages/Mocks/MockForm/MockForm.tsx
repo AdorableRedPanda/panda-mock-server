@@ -33,7 +33,7 @@ export const MockForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
 
 
     return (
-        <form className="form mock">
+        <form className="form mock_form">
             <div className="path_method">
                 <TextInput
                     onChange={setter('path')}
