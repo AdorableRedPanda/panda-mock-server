@@ -7,7 +7,7 @@ export const TextareaInput: React.FC<InputProps> = ({ value, onChange, label, na
     return (
         <InputWrapper name={name} label={label}>
             <textarea
-                className="input height-39"
+                className="input"
                 name={name}
                 onChange={onEvent}
                 value={value}

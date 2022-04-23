@@ -4,8 +4,11 @@ interface Props {
     title: string;
 }
 
-export const PageHeader: React.FC<Props> = ({ title }) => (
-    <div className="title">
-        <h2>{title}</h2>
+export const PageHeader: React.FC<Props> = ({ title, children }) => (
+    <div className="flex">
+        <div className="title">
+            <h2>{title}</h2>
+        </div>
+        {children}
     </div>
 );
