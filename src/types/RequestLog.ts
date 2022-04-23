@@ -1,10 +1,6 @@
 import { ResponseInternal } from './ResponseInternal';
-import { RequestSignature } from './index';
-import { ParsedQs } from 'qs';
+import { RequestInternal } from './index';
 
-export interface RequestLog extends RequestSignature {
-    query: ParsedQs;
-    body: object;
-    timestamp: string;
+export interface RequestLog extends RequestInternal {
     response: ResponseInternal;
 }

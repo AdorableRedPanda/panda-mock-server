@@ -4,5 +4,5 @@ import { ParsedQs } from 'qs';
 export interface RequestInternal extends RequestSignature {
     body: object;
     query: ParsedQs;
-    timestamp: string;
+    timestamp: number;
 }

@@ -8,18 +8,22 @@
     position: sticky;
     top: 0;
   }
-}
 
-.cell {
-  text-align: left;
-  padding: 5px 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  vertical-align: baseline;
-}
+  .table_row {
+    border-bottom: 1px solid var(--dark-main);
+  }
 
-.table_header {
-  background: var(--dark-main);
-  color: #fefdff;
+  .cell {
+    text-align: left;
+    padding: 5px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: baseline;
+  }
+
+  .table_header {
+    background: var(--dark-main);
+    color: #fefdff;
+  }
 }

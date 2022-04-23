@@ -5,11 +5,24 @@
   border-radius: 5px;
 
   font-weight: bolder;
-  color: var(--light-main);
-  background-color: var(--blue-1);
 
-  &:hover, &:active {
-    background-color: var(--blue-2);
+  &.primary {
+    color: var(--light-main);
+    background-color: var(--blue-1);
+
+    &:hover, &:active {
+      background-color: var(--blue-2);
+    }
+  }
+
+  &.secondary {
+    color: var(--dark-main);
+    border: 1px solid var(--dark-main);
+    background-color: transparent;
+
+    &:hover, &:active {
+      background-color: var(--grey-2);
+    }
   }
 
   cursor: pointer;

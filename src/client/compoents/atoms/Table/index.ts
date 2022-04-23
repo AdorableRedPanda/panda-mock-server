@@ -1,2 +1,3 @@
 export { Table } from './Table';
-export type { ColumnsConfig, Resolver } from './types';
+export { TableRow } from './TableRow';
+export type { ColumnsConfig, Resolver, RowComponent, Resolvers } from './types';

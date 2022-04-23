@@ -1,9 +1,22 @@
 import React from 'react';
 import { useStore } from '../../StoreProvider';
-import { Table } from '../../atoms';
+import { Table, TableRow } from '../../atoms';
 import { ResponseMock } from '../../../../types';
 import { Config } from './config';
-import { getMockKey } from './getMockKey';
+import { Resolvers, RowComponent } from '../../atoms/Table';
+
+const keySelector = ({ method, path }: ResponseMock) => `${method}_${path}`;
+
+const getObjectResolver = (space: number = 0) => (obj: unknown) => (<pre className="margin-0">{ JSON.stringify(obj, null, space) }</pre>);
+
+const logResolvers: Resolvers<ResponseMock> = {
+    selectorsMap: getObjectResolver(2),
+    template: getObjectResolver(2),
+};
+
+const LogRow: RowComponent<ResponseMock> = ({ data }) => (
+    <TableRow data={data} columns={Config} resolvers={logResolvers} />
+);
 
 export const MocksList: React.FC = () => {
     const { mocks } = useStore();
@@ -12,8 +25,9 @@ export const MocksList: React.FC = () => {
         <div className="scroll-container">
             <Table<ResponseMock>
                 columns={Config}
-                selectKey={getMockKey}
                 rows={mocks}
+                selectKey={keySelector}
+                rowComponent={LogRow}
             />
         </div>
     );
