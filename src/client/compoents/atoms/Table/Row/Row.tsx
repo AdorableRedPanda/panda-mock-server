@@ -5,7 +5,7 @@ import { Cell } from '../Cell';
 
 interface Props<TRow> {
     data: TRow;
-    columns: ColumnsConfig<TRow>
+    columns: ColumnsConfig<TRow>;
 }
 
 export const Row = <TData, >({ data, columns }: Props<TData>): React.ReactElement => (

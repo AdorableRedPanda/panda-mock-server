@@ -5,18 +5,16 @@ import { MocksList } from './MocksList';
 import { ResponseMock } from '../../../types';
 
 export const MocksPage: React.FC = () => {
-
     const { send } = useWsConnection();
-
     const onSubmit = (mock: ResponseMock) => send('mock_upsert', mock);
 
     return (
-        <div className="mocks_page">
+        <>
             <div className="title">
                 <h2>Registered request mocks</h2>
             </div>
             <MockForm onSubmit={onSubmit} />
             <MocksList />
-        </div>
+        </>
     );
 };

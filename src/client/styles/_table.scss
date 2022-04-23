@@ -2,6 +2,12 @@
   table-layout: fixed;
   border-collapse: collapse;
   width: 100%;
+  overflow: auto;
+
+  thead, th {
+    position: sticky;
+    top: 0;
+  }
 }
 
 .cell {
@@ -14,5 +20,6 @@
 }
 
 .table_header {
-  border-bottom: 1px solid #24292f;
+  background: var(--dark-main);
+  color: #fefdff;
 }

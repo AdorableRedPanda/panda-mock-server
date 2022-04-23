@@ -1,7 +1,9 @@
 .content {
   margin: auto 0;
-  flex-grow: 1;
-  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .title {
@@ -9,4 +11,10 @@
   justify-content: flex-start;
   margin: 10px;
   align-items: center;
+}
+
+.scroll-container {
+  flex-grow: 1;
+  overflow: auto;
+  margin: 0 10px;
 }

@@ -9,10 +9,12 @@ export const MocksList: React.FC = () => {
     const { mocks } = useStore();
 
     return (
-        <Table<ResponseMock>
-            columns={Config}
-            selectKey={getMockKey}
-            rows={mocks}
-        />
+        <div className="scroll-container">
+            <Table<ResponseMock>
+                columns={Config}
+                selectKey={getMockKey}
+                rows={mocks}
+            />
+        </div>
     );
 };

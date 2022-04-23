@@ -8,10 +8,12 @@ import { Config } from './config';
 export const LogsList: React.FC = () => {
     const { logs } = useStore();
     return (
-        <Table<RequestLog>
-            columns={Config}
-            selectKey={getLogKey}
-            rows={logs}
-        />
+        <div className="scroll-container">
+            <Table<RequestLog>
+                columns={Config}
+                selectKey={getLogKey}
+                rows={logs}
+            />
+        </div>
     );
 };
