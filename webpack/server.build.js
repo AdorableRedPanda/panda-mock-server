@@ -11,7 +11,11 @@ module.exports = {
 	entry: ['./src/server/index.ts'],
 	output: {
 		filename: 'mock-server.js',
-		path: path.resolve(__dirname, '../dist')
+		path: path.resolve(__dirname, '../dist'),
+		library: {
+			type: "umd",
+			name: "panda-mock-server/server"
+		}
 	},
 	module: {
 		rules: [

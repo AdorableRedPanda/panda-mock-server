@@ -1,6 +1,5 @@
 import { Method, ClientMsgType, ServerMsgType } from './types';
 
-
 export const REST_METHODS: Method[] = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 
 export const MOCKS_PORT = process.env.APP_MOCKS_PORT;

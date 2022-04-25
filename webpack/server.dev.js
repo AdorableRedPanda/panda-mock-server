@@ -3,7 +3,7 @@ const build = require('./server.build');
 
 module.exports = {
 	...build,
-
+	entry: ['./src/server/dev.ts'],
 	mode: 'development',
 	devtool: 'eval-source-map',
 	watch: true,

@@ -2,13 +2,15 @@ import { ConfigService } from './types';
 import { ClientMsgType, MockServerSettings, ResponseMockDto } from '../../../types';
 import { MocksStore } from '../MemoryStore';
 import { buildMock } from './utils/buildMock';
-
+import { MOCKS_PORT } from '../../../constants';
 
 export class SettingsService implements ConfigService {
     #store: MocksStore;
+    #mocksPort;
 
-    constructor(store: MocksStore) {
+    constructor(store: MocksStore, mocksPort?: string) {
         this.#store = store;
+        this.#mocksPort = mocksPort || MOCKS_PORT || '0202';
     }
 
     mocksUpdate([type, mockDto]: [ClientMsgType, ResponseMockDto]) {
@@ -23,6 +25,6 @@ export class SettingsService implements ConfigService {
     }
 
     getState(): MockServerSettings {
-        return { mocks: this.#store.getList() };
+        return { port: this.#mocksPort, mocks: this.#store.getList() };
     }
 }

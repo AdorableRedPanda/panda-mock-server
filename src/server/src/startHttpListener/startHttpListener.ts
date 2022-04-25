@@ -5,7 +5,8 @@ import { RequestHandler } from '../MockService/types';
 import cors from 'cors';
 import { toInternal } from './toInternal';
 
-export const startHttpListener = (handler: RequestHandler) => {
+export const startHttpListener = (handler: RequestHandler, mocksPort?: string) => {
+    const port = mocksPort || MOCKS_PORT;
     const app = express();
 
     app.use(cors({ maxAge: 600 }));
@@ -21,5 +22,5 @@ export const startHttpListener = (handler: RequestHandler) => {
         }
     });
 
-    app.listen(MOCKS_PORT, () => console.log(`mock server is listening port ${MOCKS_PORT}`));
+    app.listen(port, () => console.log(`mock server is listening port ${port}`));
 };

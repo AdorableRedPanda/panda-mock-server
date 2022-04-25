@@ -5,12 +5,15 @@ import { WsServer } from './type';
 import { WsMessage } from '../../../types';
 import { MessagesController } from '../MainController';
 import { startStaticServer } from './startStaticServer';
-
-
+import http from 'http';
 
 export class WsListener implements WsServer {
-    #httpServer = startStaticServer();
+    readonly #httpServer: http.Server;
     #connections: WebSocket[] = [];
+
+    constructor(settingsPort?: string) {
+        this.#httpServer = startStaticServer(settingsPort);
+    }
 
     start (controller: MessagesController) {
         const ws_server = new WebSocketServer({ server: this.#httpServer });

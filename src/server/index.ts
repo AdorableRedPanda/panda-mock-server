@@ -6,18 +6,22 @@ import { SettingsService } from './src/SettingsService';
 import { MainController } from './src/MainController';
 import { MockService } from './src/MockService';
 
-const logsService = new LoggingService();
+export const serverStart = (
+    mocksPort?: string,
+    settingsPort?: string,
+) => {
 
-const store = new MemoryStore();
+    const logsService = new LoggingService();
 
-const mockService = new MockService(logsService, store);
-startHttpListener(mockService);
+    const store = new MemoryStore();
 
-const settings = new SettingsService(store);
-const controller = new MainController(logsService, settings);
+    const mockService = new MockService(logsService, store);
+    startHttpListener(mockService, mocksPort);
 
-const wsServer = new WsListener();
+    const settings = new SettingsService(store, mocksPort);
+    const controller = new MainController(logsService, settings);
 
-wsServer.start(controller);
+    const wsServer = new WsListener(settingsPort);
 
-
+    wsServer.start(controller);
+};
