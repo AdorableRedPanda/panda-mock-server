@@ -1,10 +1,6 @@
 const path = require('path');
-const dotenv = require('dotenv');
-const webpack = require('webpack');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-
-dotenv.config({ path: './.env' });
 
 module.exports = {
 	entry: './src/client/index.tsx',
@@ -29,10 +25,6 @@ module.exports = {
 		new HtmlWebPackPlugin({
 			template: './src/client/index.html',
 			filename: './index.html',
-		}),
-		new webpack.DefinePlugin({
-			"process.env.APP_SETTINGS_PORT": JSON.stringify(process.env.APP_SETTINGS_PORT),
-			"process.env.APP_MOCKS_PORT": JSON.stringify(process.env.APP_MOCKS_PORT),
 		}),
 	],
 	resolve: {

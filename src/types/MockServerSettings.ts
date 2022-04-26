@@ -2,5 +2,5 @@ import { ResponseMock } from './ResponseMock';
 
 export interface MockServerSettings {
     mocks: ResponseMock[];
-    port: string;
+    port: string | null;
 }

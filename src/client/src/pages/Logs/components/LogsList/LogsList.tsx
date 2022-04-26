@@ -4,9 +4,9 @@ import { Table, TableRow } from '../../../../components';
 import { RowComponent } from '../../../../components/Table';
 
 import { Config } from './config';
-import { useStore } from '../../../../containers';
 import { getLogKey } from './getLogKey';
 import { resolvers } from './resolvers';
+import { useLogsHistory } from '../../../../providers/LogsStore';
 
 
 const LogRow: RowComponent<RequestLog> = ({ data }) => (
@@ -14,7 +14,7 @@ const LogRow: RowComponent<RequestLog> = ({ data }) => (
 );
 
 export const LogsList: React.FC = () => {
-    const { logs } = useStore();
+    const logs = useLogsHistory();
     return (
         <div className="scroll-container">
             <Table<RequestLog>

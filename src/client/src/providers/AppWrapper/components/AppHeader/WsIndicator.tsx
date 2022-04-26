@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWsConnection } from '../../../StoreProvider';
+import { useWsConnection } from '../../../WsProvider';
 
 export const WsIndicator: React.FC = () => {
     const { state } = useWsConnection();

@@ -3,14 +3,14 @@ import { MocksList } from './MocksList';
 import { ResponseMock } from '../../../../types';
 import { MockForm } from './MockForm';
 import { PageHeader } from '../../components/PageTitle';
-import { useWsConnection } from '../../containers';
 import { Button } from '../../components';
 import { useDialog } from '../useDialog';
+import { useWsConnection } from '../../providers';
 
 
 export const Mocks: React.FC = () => {
     const { send } = useWsConnection();
-    const onSubmit = (mock: ResponseMock) => send('mock_upsert', mock);
+    const onSubmit = (mock: ResponseMock) => send(['mock_upsert', mock]);
 
     const [ref, show, hide] = useDialog();
 

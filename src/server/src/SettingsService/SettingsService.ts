@@ -6,11 +6,11 @@ import { MOCKS_PORT } from '../../../constants';
 
 export class SettingsService implements ConfigService {
     #store: MocksStore;
-    #mocksPort;
+    readonly #mocksPort;
 
     constructor(store: MocksStore, mocksPort?: string) {
         this.#store = store;
-        this.#mocksPort = mocksPort || MOCKS_PORT || '0202';
+        this.#mocksPort = mocksPort || MOCKS_PORT || null;
     }
 
     mocksUpdate([type, mockDto]: [ClientMsgType, ResponseMockDto]) {
