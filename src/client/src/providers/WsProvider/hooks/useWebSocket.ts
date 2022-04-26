@@ -4,7 +4,9 @@ import { ServerMsgType } from '../../../../../types';
 import { buildWsMessage, parseWsMessage } from '../../../../../utils';
 import { isServerMessage } from '../../../../../utils/isServerMessage';
 
-const port = window.location.port;
+const { APP_SETTINGS_PORT } = process.env;
+
+const port = APP_SETTINGS_PORT || window.location.port;
 const wsUrl = `ws://localhost:${port}/ws`;
 
 export const useWebSocket = (onMessage: OnMessage<ServerMsgType>): WsConnection => {

@@ -9,7 +9,6 @@
     "build:server": "webpack -c webpack/server.build.js",
     "dev:client": "webpack serve -c webpack/client.dev.js",
     "dev:server": "webpack -c webpack/server.dev.js",
-    "dev": "concurrently npm:dev:*",
     "draw:cliet": "npx arkit src/client/ -o arkit.svg",
     "draw:server": "npx arkit src/server/ -o arkit.svg"
   },

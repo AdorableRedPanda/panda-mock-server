@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, JsonInput, MethodSelect } from '../../../../components';
 import { TextInput } from '../../../../components/TextInput';
-import { MOCKS_PORT } from '../../../../../../constants';
 import { FetchArgs, fetchRequest } from './fetchRequest';
 import { Func } from '../../../../../../types';
+import { useSettings } from '../../../../providers/SettingsProvider';
 
 interface Props {
     onCancel: Func;
@@ -12,13 +12,14 @@ interface Props {
 export const TestForm: React.FC<Props> = ({ onCancel }) => {
     const [args, setArgs] = useState<FetchArgs>({ url: '', method: 'GET', body: {} });
 
+    const { port } = useSettings();
+
     const fieldSetter = <Key extends keyof FetchArgs>(field: Key) => (value: FetchArgs[Key]) => (
         setArgs((prev) => ({ ...prev, [field]: value }))
     );
     
-    const onSubmit = () => fetchRequest(args);
-
-    const placeholder = `http://localhost:${MOCKS_PORT}/...`;
+    const onSubmit = () => port && fetchRequest(port, args);
+    const placeholder = `http://localhost:${port}/...`;
 
     return (
         <form className="form test_form">
