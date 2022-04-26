@@ -1,13 +1,12 @@
 import { getVariables } from './getVariables';
 import { ResponseMock, ResponseMockDto } from '../../../../types';
+import { formPath } from '../../../../utils';
 
-export const buildMock = (mockDto : ResponseMockDto): ResponseMock => {
-    const { selectorsMap, template } = mockDto;
-    if (Object.keys(selectorsMap).length === 0) {
-        return { ...mockDto, variables: [] };
-    }
+export const buildMock = (mockDto: ResponseMockDto): ResponseMock => {
+    const { selectorsMap, template, path } = mockDto;
 
-    const variables = getVariables(selectorsMap, template);
+    const variables = Object.keys(selectorsMap).length ?
+        getVariables(selectorsMap, template) : [];
 
-    return { ...mockDto, variables };
+    return { ...mockDto, variables, path: formPath(path) };
 };

@@ -1,6 +1,7 @@
 import { ResponseMock, RequestSignature } from '../../../types';
+import { formPath } from '../../../utils';
 
-export const isMatch = (req: RequestSignature, mock: RequestSignature): boolean => mock.method === req.method && mock.path === req.path;
+export const isMatch = (req: RequestSignature, mock: RequestSignature): boolean => mock.method === req.method && mock.path === formPath(req.path);
 
 export const removeFrom = <T extends RequestSignature>(req: RequestSignature, mocks: T[]): T[] => mocks.filter((mock) => !isMatch(mock, req));
 

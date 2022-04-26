@@ -3,7 +3,7 @@ import { Func, ResponseMockDto } from '../../../../../types';
 
 
 const initialState: ResponseMockDto = {
-    code: 200, method: 'GET', path: '', selectorsMap: {}, template: {},
+    code: 200, method: 'GET', path: '/', selectorsMap: {}, template: {},
 };
 
 type FieldSetter<K extends keyof ResponseMockDto> = Func<K, Func<ResponseMockDto[K]>>;
