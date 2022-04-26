@@ -8,17 +8,16 @@
     "build:client": "webpack -c webpack/client.build.js",
     "build:server": "webpack -c webpack/server.build.js",
     "dev:client": "webpack serve -c webpack/client.dev.js",
-    "dev:server": "webpack -c webpack/server.dev.js",
-    "draw:cliet": "npx arkit src/client/ -o arkit.svg",
-    "draw:server": "npx arkit src/server/ -o arkit.svg"
+    "dev:server": "webpack -c webpack/server.dev.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AdorableRedPanda/panda-mock-server.git"
   },
   "keywords": [
-    "mocks",
-    "mock-server"
+    "mock",
+    "mock-server",
+    "api"
   ],
   "author": "AdorableRedPanda",
   "license": "ISC",
@@ -61,7 +60,6 @@
     "@types/react-router-dom": "5.3.3",
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
-    "arkit": "1.6.4",
     "eslint": "7.11.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-react": "7.28.0",
