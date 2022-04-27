@@ -1,8 +1,8 @@
-import { Resolvers } from '../../../components/Table';
+import { CellRenderers } from '../../../components/Table';
 import { ResponseMock } from '../../../../../types';
-import { getObjectResolver } from '../../resolvers';
+import { renderObject, renderVars } from '../../resolvers';
 
-export const resolvers: Resolvers<ResponseMock> = {
-    selectorsMap: getObjectResolver(0),
-    template: getObjectResolver(2),
+export const resolvers: CellRenderers<ResponseMock> = {
+    selectorsMap: renderVars,
+    template: renderObject,
 };

@@ -17,12 +17,12 @@ export const MockForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
     const { path, method, code, selectorsMap, template } = state;
 
     const onVarsChange = (obj: object) => setter('selectorsMap')(
-        Object
-        .fromEntries(
-            Object.entries(obj)
-                .filter(([, value]) => Array.isArray(value))
-        )
-    );
+            Object
+                .fromEntries(
+                    Object.entries(obj)
+                        .filter(([, value]) => Array.isArray(value))
+                )
+        );
 
     const onCodeChange = (str: string) => {
         const parsed = Number.parseInt(str);
@@ -34,7 +34,7 @@ export const MockForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
 
     return (
         <form className="form mock_form">
-            <div className="path_method">
+            <div className="text-inputs">
                 <TextInput
                     onChange={setter('path')}
                     value={path}
@@ -49,18 +49,20 @@ export const MockForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
                 />
                 <MethodSelect onChange={setter('method')} value={method} />
             </div>
-            <JsonInput
-                label="Template"
-                name="template"
-                onChange={setter('template')}
-                value={template}
-            />
-            <JsonInput
-                label="Variables"
-                name="variables"
-                onChange={onVarsChange}
-                value={selectorsMap}
-            />
+            <div className="text-areas">
+                <JsonInput
+                    label="Template"
+                    name="template"
+                    onChange={setter('template')}
+                    value={template}
+                />
+                <JsonInput
+                    label="Variables"
+                    name="variables"
+                    onChange={onVarsChange}
+                    value={selectorsMap}
+                />
+            </div>
             <div className="buttons_wrapper">
                 <Button onClick={onCancel} text="Cancel" variant="secondary" />
                 <Button onClick={onClick} text="Create" />

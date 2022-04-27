@@ -6,9 +6,9 @@ interface ColumnConfig<TRow, Key extends keyof TRow> {
     width: string;
 }
 
-export type Resolvers<T> = Partial<Record<keyof T, Resolver<T, keyof T>>>;
+export type CellRenderers<T> = Partial<Record<keyof T, CellRenderer<T, keyof T>>>;
 
-export type Resolver<T, K extends keyof T> = (raw: T[K]) => React.ReactElement | string;
+export type CellRenderer<T, K extends keyof T> = (raw: T[K]) => React.ReactElement | string;
 
 export type ColumnsConfig<TRow> = ColumnConfig<TRow, keyof TRow>[];
 

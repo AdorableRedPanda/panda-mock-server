@@ -23,4 +23,7 @@
   }
 }
 
-textarea { resize: vertical; }
+textarea {
+  resize: vertical;
+  height: 100%;
+}

@@ -31,3 +31,13 @@ h1, h2, h3, h4, h5, h6, ul, li {
   flex-direction: column;
   overflow: hidden;
 }
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

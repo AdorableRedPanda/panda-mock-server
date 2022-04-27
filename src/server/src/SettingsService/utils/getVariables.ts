@@ -1,7 +1,8 @@
 import { Path, pathsSlice, toFlat } from 'red-panda-utils';
 import { MockVariable } from '../../../../types';
+import { SelectorsMap } from '../../../../types/SelectorsMap';
 
-export const getVariables = (varsMap: Record<string, Path>, template: object): MockVariable[] => {
+export const getVariables = (varsMap: SelectorsMap, template: object): MockVariable[] => {
     const usagesMap = pathsSlice(template)
         .map(toFlat)
         .reduce((prev, [path, leaf]) => {

@@ -1,5 +1,9 @@
 import React from 'react';
+import { ObjectView, VariablesComponent } from '../components';
+import { SelectorsMap } from '../../../types/SelectorsMap';
 
-export const getObjectResolver = (space: number = 0) => (obj: unknown) => (<pre className="margin-0">{ JSON.stringify(obj, null, space) }</pre>);
+export const renderObject = (obj: unknown) => <ObjectView obj={obj} />;
 
-export const timestampResolver = (timestamp: number) => (new Date(timestamp)).toLocaleTimeString();
+export const renderVars = (obj: SelectorsMap) => <VariablesComponent map={obj} />;
+
+export const renderTimestamp = (timestamp: number) => (new Date(timestamp)).toLocaleTimeString();

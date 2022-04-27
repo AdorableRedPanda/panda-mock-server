@@ -1,5 +1,5 @@
 .form {
-  width: 700px;
+  width: 40vw;
 
   .buttons_wrapper {
     padding-top: 10px;
@@ -9,19 +9,27 @@
   }
 }
 
-.path_method {
-  display: grid;
-}
-
 .test_form {
-  .path_method {
-
-    grid-template-columns: 1fr 150px;
+  .text-inputs {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
   }
 }
 
 .mock_form {
-  .path_method {
-    grid-template-columns: 1fr 100px 150px;
+  height: 400px;
+
+  .text-inputs {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+  }
+
+  .text-areas {
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    textarea {
+      resize: none;
+    }
   }
 }

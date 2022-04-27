@@ -1,8 +1,8 @@
 import { RequestSignature } from './RequestSignature';
-import { Path } from 'red-panda-utils';
+import { SelectorsMap } from './SelectorsMap';
 
 export interface ResponseMockDto extends RequestSignature {
     code: number;
     template: object;
-    selectorsMap: Record<string, Path>;
+    selectorsMap: SelectorsMap;
 }

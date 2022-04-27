@@ -10,7 +10,7 @@ import { useLogsHistory } from '../../../../providers/LogsStore';
 
 
 const LogRow: RowComponent<RequestLog> = ({ data }) => (
-    <TableRow data={data} columns={Config} resolvers={resolvers} />
+    <TableRow data={data} columns={Config} renderers={resolvers} />
 );
 
 export const LogsList: React.FC = () => {

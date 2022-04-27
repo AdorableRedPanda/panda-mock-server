@@ -7,7 +7,7 @@ import { resolvers } from './resolvers';
 import { useSettings } from '../../../providers/SettingsProvider';
 
 const LogRow: RowComponent<ResponseMock> = ({ data }) => (
-    <TableRow data={data} columns={Config} resolvers={resolvers} />
+    <TableRow data={data} columns={Config} renderers={resolvers} />
 );
 
 export const MocksList: React.FC = () => {

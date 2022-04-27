@@ -23,7 +23,7 @@ export const TestForm: React.FC<Props> = ({ onCancel }) => {
 
     return (
         <form className="form test_form">
-            <div className="path_method">
+            <div className="text-inputs">
                 <TextInput
                     placeholder={placeholder}
                     name="url"
