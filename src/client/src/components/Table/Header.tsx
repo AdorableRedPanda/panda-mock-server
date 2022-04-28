@@ -1,8 +1,8 @@
 import React from 'react';
-import { ColumnsConfig } from './types';
+import { HeadersConfig } from './types';
 
 interface Props<TRow> {
-   columns: ColumnsConfig<TRow>;
+   columns: HeadersConfig<TRow>;
 }
 
 export const Header = <TRow, >({ columns }: Props<TRow>): React.ReactElement => (

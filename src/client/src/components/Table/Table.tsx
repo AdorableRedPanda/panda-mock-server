@@ -1,20 +1,16 @@
-import { ColumnsConfig, RowComponent } from './types';
-import React from 'react';
+import { HeadersConfig } from './types';
+import React, { PropsWithChildren } from 'react';
 import { Header } from './Header';
-import { Func } from '../../../../types';
 
 interface Props<TData = unknown> {
-    columns: ColumnsConfig<TData>;
-    rows: TData[];
-    selectKey: Func<TData, string>;
-    rowComponent: RowComponent<TData>
+    headers: HeadersConfig<TData>;
 }
 
-export const Table = <TRow, >({ columns, rows, selectKey, rowComponent: Component }: Props<TRow>) => (
+export const Table = <TRow, >({ headers, children }: PropsWithChildren<Props<TRow>>) => (
     <table className="table">
-        <Header columns={columns} />
+        <Header columns={headers} />
         <tbody>
-            {rows.map((row) => <Component data={row} key={selectKey(row)} />)}
+            {children}
         </tbody>
     </table>
 );
