@@ -1,28 +1,16 @@
 import React from 'react';
-import { RequestLog } from '../../../../../../types';
-import { Table, TableRow } from '../../../../components';
-import { RowComponent } from '../../../../components/Table';
-
-import { Config } from './config';
-import { getLogKey } from './getLogKey';
-import { resolvers } from './resolvers';
+import { Table } from '../../../../components';
+import { ButtonsConf, RequestColumns } from './configs';
 import { useLogsHistory } from '../../../../providers/LogsStore';
-
-
-const LogRow: RowComponent<RequestLog> = ({ data }) => (
-    <TableRow data={data} columns={Config} renderers={resolvers} />
-);
+import { LogRow } from './LogRow';
 
 export const LogsList: React.FC = () => {
     const logs = useLogsHistory();
     return (
         <div className="scroll-container">
-            <Table<RequestLog>
-                columns={Config}
-                rows={logs}
-                selectKey={getLogKey}
-                rowComponent={LogRow}
-            />
+            <Table headers={[...RequestColumns, ...ButtonsConf]} >
+                {logs.map((log) => <LogRow data={log} key={log.timestamp.toString()} />)}
+            </Table>
         </div>
     );
 };

@@ -1,8 +1,11 @@
 
-interface HeaderConf<TRow, Key extends keyof TRow> {
+type ColumnKey<T> = T extends object ? keyof T : string;
+
+interface HeaderConf<T = unknown> {
     label: string;
-    key: Key | string;
+    key: ColumnKey<T>;
     width: string;
 }
 
-export type HeadersConfig<TRow = unknown> = HeaderConf<TRow, keyof TRow>[];
+export type HeadersConfig<T = unknown> = HeaderConf<T>[];
+
