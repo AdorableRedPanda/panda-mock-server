@@ -1,14 +1,14 @@
-import { MocksStore } from '../MemoryStore';
 import { RequestHandler } from './types';
-import { RequestLogger } from '../LoggingService';
 import { RequestInternal, ResponseInternal } from '../../../types';
 import { buildResponse } from './utils';
+import { LoggingService } from '../LoggingService';
+import { MemoryStore } from '../MemoryStore';
 
 export class MockService implements RequestHandler {
-    #logger: RequestLogger;
-    #store: MocksStore;
+    #logger: LoggingService;
+    #store: MemoryStore;
     
-    constructor(logger: RequestLogger, store: MocksStore) {
+    constructor(logger: LoggingService, store: MemoryStore) {
         this.#logger = logger;
         this.#store = store;
     }

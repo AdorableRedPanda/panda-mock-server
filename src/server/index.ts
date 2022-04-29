@@ -3,7 +3,7 @@ import { LoggingService } from './src/LoggingService';
 import { WsListener } from './src/WsListener';
 import { MemoryStore } from './src/MemoryStore';
 import { SettingsService } from './src/SettingsService';
-import { MainController } from './src/MainController';
+import { CoreController } from './src/CoreController';
 import { MockService } from './src/MockService';
 
 export const serverStart = (
@@ -19,7 +19,7 @@ export const serverStart = (
     startHttpListener(mockService, mocksPort);
 
     const settings = new SettingsService(store, mocksPort);
-    const controller = new MainController(logsService, settings);
+    const controller = new CoreController(logsService, settings);
 
     const wsServer = new WsListener(settingsPort);
 

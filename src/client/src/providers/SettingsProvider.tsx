@@ -9,7 +9,7 @@ export const useSettings = () =>
     useStrictContext(SettingsContext, 'useSettings', 'SettingsContext');
 
 export const SettingsProvider:React.FC = ({ children }) => {
-    const [settings, setSettings] = useState<MockServerSettings>({ mocks: [], port: null });
+    const [settings, setSettings] = useState<MockServerSettings>({ mocks: [], port: null, files: [] });
 
     useWsSubscription('settings', setSettings);
 

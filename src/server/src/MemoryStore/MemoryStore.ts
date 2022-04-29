@@ -1,8 +1,7 @@
 import { ResponseMock, RequestSignature } from '../../../types';
-import { MocksStore } from './MocksStore';
 import { isMatch, removeFrom, upsertIn } from './utils';
 
-export class MemoryStore implements MocksStore {
+export class MemoryStore {
     #mocks: ResponseMock[] = [];
 
     getList(): ResponseMock[] {

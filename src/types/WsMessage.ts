@@ -10,7 +10,8 @@ export interface WsMessage<Type extends WsMessageType = WsMessageType> {
 
 export type MessageBody<Type extends WsMessageType> =
     Type extends 'requests' ? RequestLog[]:
-        Type extends 'settings' ? MockServerSettings: ResponseMockDto;
+        Type extends 'settings' ? MockServerSettings:
+            Type extends 'save_mocks' ? string: ResponseMockDto;
 
 export type ClientMessage = WsMessage<ClientMsgType>;
 

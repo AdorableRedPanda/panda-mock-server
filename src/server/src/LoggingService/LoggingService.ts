@@ -1,7 +1,6 @@
-import { LogsProvider, RequestLogger } from './types';
 import { RequestLog, ResponseInternal, Func, RequestInternal } from '../../../types';
 
-export class LoggingService implements RequestLogger, LogsProvider {
+export class LoggingService {
     #logs: RequestLog[] = [];
     #subscribers: Func<RequestLog>[] = [];
 

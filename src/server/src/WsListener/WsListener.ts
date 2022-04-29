@@ -1,13 +1,12 @@
 import { parseWsMessage } from '../../../utils';
 import { WebSocketServer, WebSocket } from 'ws';
 import { isClientMessage } from '../../../utils/isClientMessage';
-import { WsServer } from './type';
+import { CoreController } from '../CoreController';
 import { WsMessage } from '../../../types';
-import { MessagesController } from '../MainController';
 import { startStaticServer } from './startStaticServer';
 import http from 'http';
 
-export class WsListener implements WsServer {
+export class WsListener {
     readonly #httpServer: http.Server;
     #connections: WebSocket[] = [];
 
@@ -15,7 +14,7 @@ export class WsListener implements WsServer {
         this.#httpServer = startStaticServer(settingsPort);
     }
 
-    start (controller: MessagesController) {
+    start (controller: CoreController) {
         const ws_server = new WebSocketServer({ server: this.#httpServer });
 
         controller.subscribeOnPublishing((message) => this.#sendToAll(message));
