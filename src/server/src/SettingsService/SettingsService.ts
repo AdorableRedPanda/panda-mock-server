@@ -1,6 +1,5 @@
-import { ClientMsgType, Func, MockServerSettings, ResponseMockDto } from '../../../types';
+import { Func, MockServerSettings, SettingsMessage } from '../../../types';
 import { MemoryStore } from '../MemoryStore';
-import { buildMock } from './utils/buildMock';
 import { MOCKS_PORT } from '../../../constants';
 import { FilesController } from '../FilesController';
 
@@ -18,18 +17,13 @@ export class SettingsService {
         this.#filesController.subscribeToFiles((files) => cb(this.#buildState(files)));
     }
 
-    async saveMocks(filename: string) {
-        this.#filesController.createFile(filename, this.#store.getList());
-    }
-
-    mocksUpdate([type, mockDto]: [ClientMsgType, ResponseMockDto]) {
-        const mock = buildMock(mockDto);
+    mocksUpdate({ type, body }:SettingsMessage) {
         switch (type) {
-            case 'mock_delete':
-                this.#store.removeMock(mock);
+            case 'mocks':
+                this.#store.handleMessage(body);
                 break;
-            case 'mock_upsert':
-                this.#store.upsertMock(mock);
+            case 'files':
+                this.#filesController.handleMessage(body, this.#store.getList());
         }
     }
 

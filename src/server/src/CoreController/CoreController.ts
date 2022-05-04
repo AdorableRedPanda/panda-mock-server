@@ -1,10 +1,9 @@
 import { buildWsMessage } from '../../../utils';
-import { Func, WsMessage, ClientMessage } from '../../../types';
+import { Func, WsMessage, ClientMessage, MessageHandler } from '../../../types';
 import { LoggingService } from '../LoggingService';
 import { SettingsService } from '../SettingsService';
-import { MessageBody } from '../../../types/WsMessage';
 
-export class CoreController {
+export class CoreController implements MessageHandler<ClientMessage> {
     #logsService: LoggingService;
     #settingsService: SettingsService;
 
@@ -18,24 +17,13 @@ export class CoreController {
         this.#logsService.subscribe((log) => this.#sendAll({ type: 'requests', body: [log] }));
     }
 
-    async handleMessage({ type, body }: ClientMessage) {
-        switch (type) {
-            case 'mock_delete':
-            case 'mock_upsert':
-                this.#settingsService.mocksUpdate([type, body as MessageBody<'mock_upsert'>]);
-                this.#sendAll(buildWsMessage('settings', await this.#settingsService.getState()));
-                break;
-            case 'save_mocks':
-                break;
-            default:
-
-                return;
-        }
+    handleMessage({ body }: ClientMessage) {
+        this.#settingsService.mocksUpdate(body);
     }
 
-    async handleConnection(send: Func<WsMessage>) {
+    handleConnection(send: Func<WsMessage>) {
         send(buildWsMessage('requests', this.#logsService.getHistory()));
-        send(buildWsMessage('settings', await this.#settingsService.getState()));
+        this.#settingsService.getState().then(settings => send(buildWsMessage('settings', settings)));
     }
 
     subscribeOnPublishing(send: Func<WsMessage>) {

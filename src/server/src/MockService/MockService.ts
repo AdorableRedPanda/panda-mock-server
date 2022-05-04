@@ -1,10 +1,10 @@
 import { RequestHandler } from './types';
-import { RequestInternal, ResponseInternal } from '../../../types';
+import { MessageHandler, MockMessage, RequestInternal, ResponseInternal } from '../../../types';
 import { buildResponse } from './utils';
 import { LoggingService } from '../LoggingService';
 import { MemoryStore } from '../MemoryStore';
 
-export class MockService implements RequestHandler {
+export class MockService implements RequestHandler, MessageHandler<MockMessage> {
     #logger: LoggingService;
     #store: MemoryStore;
     
@@ -19,5 +19,9 @@ export class MockService implements RequestHandler {
 
         this.#logger.onRequest([req, res]);
         return res;
+    }
+
+    handleMessage(message: MockMessage) {
+        this.#store.handleMessage(message);
     }
 }

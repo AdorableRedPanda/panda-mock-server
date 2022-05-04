@@ -1,11 +1,10 @@
-import { Func } from '../../../types';
+import { FileMessage, Func, MessageHandler } from '../../../types';
 
 const fs = require('fs');
 
 const MocksDirectoryName = 'mocks_collection';
 
-
-export class FilesController {
+export class FilesController implements MessageHandler<FileMessage> {
     #filesSubscriptions: Func<string[]>[] = [];
 
     constructor() {
@@ -15,20 +14,21 @@ export class FilesController {
         }
     }
 
-    async #emitFilesUpdate() {
-        const files = await this.getFilesList();
-        this.#filesSubscriptions.forEach(cb => cb(files));
+    #emitFilesUpdate() {
+        this.getFilesList().then(files => this.#filesSubscriptions.forEach(cb => cb(files)));
     }
 
-    createFile(name: string, data: unknown) {
+    #createFile(name: string, data: unknown) {
         fs.writeFile(`${MocksDirectoryName}/${name}`, JSON.stringify(data), (err: NodeJS.ErrnoException | null) => {
             if(err) {
                 return console.log(`cannot create file ${err}`);
             }
         });
+
+        this.#emitFilesUpdate();
     }
 
-    deleteFile(file: string) {
+    #deleteFile(file: string) {
         fs.rm(file, this.#emitFilesUpdate);
     }
 
@@ -47,5 +47,17 @@ export class FilesController {
 
     subscribeToFiles(cb: Func<string[]>) {
         this.#filesSubscriptions.push(cb);
+    }
+
+    handleMessage({ type, body }: FileMessage, data: unknown) {
+        switch (type) {
+            case 'delete':
+                this.#deleteFile(body);
+                break;
+            case 'create':
+                this.#createFile(body, JSON.stringify(data));
+                break;
+
+        }
     }
 }

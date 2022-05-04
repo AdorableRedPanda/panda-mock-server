@@ -2,9 +2,9 @@ import { parseWsMessage } from '../../../utils';
 import { WebSocketServer, WebSocket } from 'ws';
 import { isClientMessage } from '../../../utils/isClientMessage';
 import { CoreController } from '../CoreController';
-import { WsMessage } from '../../../types';
 import { startStaticServer } from './startStaticServer';
 import http from 'http';
+import { WsMessage } from '../../../types';
 
 export class WsListener {
     readonly #httpServer: http.Server;

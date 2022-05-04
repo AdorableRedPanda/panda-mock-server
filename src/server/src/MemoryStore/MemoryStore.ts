@@ -1,7 +1,8 @@
-import { ResponseMock, RequestSignature } from '../../../types';
+import { ResponseMock, RequestSignature, MockMessage, MessageHandler } from '../../../types';
 import { isMatch, removeFrom, upsertIn } from './utils';
+import { buildMock } from '../SettingsService/utils/buildMock';
 
-export class MemoryStore {
+export class MemoryStore implements MessageHandler<MockMessage> {
     #mocks: ResponseMock[] = [];
 
     getList(): ResponseMock[] {
@@ -12,11 +13,22 @@ export class MemoryStore {
         return this.#mocks.find((mock) => isMatch(mock, req));
     }
 
-    upsertMock(mock: ResponseMock) {
+    handleMessage({ type, body }: MockMessage) {
+        switch (type) {
+            case 'delete':
+                this.#removeMock(body);
+                break;
+            case 'upsert':
+                this.#upsertMock(buildMock(body));
+                break;
+        }
+    }
+
+    #upsertMock(mock: ResponseMock) {
         this.#mocks = upsertIn(mock, this.#mocks);
     }
 
-    removeMock(req: RequestSignature) {
+    #removeMock(req: RequestSignature) {
         this.#mocks = removeFrom(req, this.#mocks);
     }
 
