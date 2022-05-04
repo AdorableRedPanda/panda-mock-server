@@ -10,8 +10,9 @@ export const useSettings = () =>
 
 export const SettingsProvider:React.FC = ({ children }) => {
     const [settings, setSettings] = useState<MockServerSettings>({ mocks: [], port: null, files: [] });
+    const updateSettings = (next: MockServerSettings) => setSettings(next);
 
-    useWsSubscription('settings', setSettings);
+    useWsSubscription('settings', updateSettings);
 
     return <SettingsContext.Provider value={settings} children={children} />;
 };

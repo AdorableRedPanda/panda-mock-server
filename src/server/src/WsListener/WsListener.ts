@@ -1,6 +1,5 @@
-import { parseWsMessage } from '../../../utils';
+import { parseWsMessage, isClientMessage } from '../../../utils';
 import { WebSocketServer, WebSocket } from 'ws';
-import { isClientMessage } from '../../../utils/isClientMessage';
 import { CoreController } from '../CoreController';
 import { startStaticServer } from './startStaticServer';
 import http from 'http';

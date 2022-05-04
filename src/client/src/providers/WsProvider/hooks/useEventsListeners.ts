@@ -5,17 +5,17 @@ import { ServerMsgType } from '../../../../../types';
 export const useEventsListeners = () : ListenersHook => {
     const [handlers, setHandlers] = useState<SubscriptionListeners>({ settings: [], requests: [] });
 
-    const subscribe: ListenerHandler = useCallback(
+    const subscribe: ListenerHandler<ServerMsgType> = useCallback(
         ([type, cb]) => setHandlers((prev) => ({ ...prev, [type]: [...prev[type], cb] })),
         [setHandlers]
     );
-    const unsubscribe: ListenerHandler = useCallback(
+    const unsubscribe: ListenerHandler<ServerMsgType> = useCallback(
         ([type, cb]) => setHandlers(
             (prev) => ({ ...prev, [type]: prev[type].filter(item => item !== cb) })
         ), [setHandlers]
     );
 
-    const onMessage: OnMessage<ServerMsgType> = useCallback(([type, body]) => {
+    const onMessage: OnMessage = useCallback(([type, body]) => {
         handlers[type].forEach(cb => cb(body));
     }, [handlers]);
 

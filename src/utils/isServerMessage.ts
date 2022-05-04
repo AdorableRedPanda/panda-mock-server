@@ -1,6 +1,4 @@
-import { WsMessageType, ServerMessage, WsMessage } from '../types';
-import { ServerMsgTypes } from '../constants';
+import { ServerMessage, WsMessage } from '../types';
+import { ServerMessageTypes } from '../constants';
 
-export const isServerMessage = (msg: WsMessage): msg is ServerMessage => (
-    (ServerMsgTypes as WsMessageType[]).includes(msg.type)
-);
+export const isServerMessage = (msg: WsMessage): msg is ServerMessage => ServerMessageTypes.includes(msg.type);

@@ -1,4 +1,3 @@
-import { buildWsMessage } from '../../../utils';
 import { Func, WsMessage, ClientMessage, MessageHandler } from '../../../types';
 import { LoggingService } from '../LoggingService';
 import { SettingsService } from '../SettingsService';
@@ -22,8 +21,8 @@ export class CoreController implements MessageHandler<ClientMessage> {
     }
 
     handleConnection(send: Func<WsMessage>) {
-        send(buildWsMessage('requests', this.#logsService.getHistory()));
-        this.#settingsService.getState().then(settings => send(buildWsMessage('settings', settings)));
+        send({ type: 'requests', body: this.#logsService.getHistory() });
+        this.#settingsService.getState().then(settings => send({ type: 'settings', body: settings }));
     }
 
     subscribeOnPublishing(send: Func<WsMessage>) {

@@ -4,13 +4,14 @@ import { Table } from '../../../components';
 import { MockRow } from './MockRow';
 import { ButtonsConf, MockColumns } from './configs';
 import { Func, ResponseMockDto } from '../../../../../types';
+import { buildClientMessage } from '../../../../../utils/buildClientMessage';
 
 
 export const MocksList: React.FC = () => {
     const { mocks } = useSettings();
     const { send } = useWsConnection();
 
-    const onDelete: Func<ResponseMockDto> = (mock) => send(['mock_delete', mock]);
+    const onDelete: Func<ResponseMockDto> = (mock) => send(buildClientMessage(['settings', 'mocks', 'delete'], mock));
 
     return (
         <div className="scroll-container">

@@ -6,11 +6,12 @@ import { PageHeader } from '../../components/PageTitle';
 import { Button } from '../../components';
 import { useDialog } from '../useDialog';
 import { useWsConnection } from '../../providers';
+import { buildClientMessage } from '../../../../utils/buildClientMessage';
 
 
 export const Mocks: React.FC = () => {
     const { send } = useWsConnection();
-    const onSubmit = (mock: ResponseMock) => send(['mock_upsert', mock]);
+    const onSubmit = (mock: ResponseMock) => send(buildClientMessage(['settings', 'mock', 'upsert'], mock));
 
     const [ref, show, hide] = useDialog();
 

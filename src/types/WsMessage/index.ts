@@ -1,4 +1,4 @@
-export type { ServerMessage } from './ServerMessage';
+export type { ServerMessage, ServerMsgType, ServerMsgBody } from './ServerMessage';
 export type { ClientMessage } from './ClientMessage';
 export type { MockMessage } from './MockMessage';
 export type { SettingsMessage } from './SettingsMessage';

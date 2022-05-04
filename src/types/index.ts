@@ -17,4 +17,6 @@ export type {
     SettingsMessage,
     FileMessage,
     WsMessage,
+    ServerMsgType,
+    ServerMsgBody,
 } from './WsMessage';

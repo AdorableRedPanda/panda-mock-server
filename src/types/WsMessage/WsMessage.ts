@@ -1,4 +1,4 @@
-export interface WsMessage<Type = unknown, Body = unknown> {
+export interface WsMessage<Type = string, Body = unknown> {
     type: Type;
     body: Body;
 }

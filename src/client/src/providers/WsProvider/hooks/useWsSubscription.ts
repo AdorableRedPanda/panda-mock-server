@@ -1,10 +1,9 @@
-import { Func, ServerMsgType } from '../../../../../types';
-import { MessageBody } from '../../../../../types/WsMessage';
+import { Func, ServerMsgBody, ServerMsgType } from '../../../../../types';
 import { useStrictContext } from '../../useStrictContext';
 import { useEffect } from 'react';
 import { WsContext } from '../WsProvider';
 
-export const useWsSubscription = <T extends ServerMsgType>(type: T, cb: Func<MessageBody<T>>) => {
+export const useWsSubscription = <T extends ServerMsgType>(type: T, cb: Func<ServerMsgBody<T>>) => {
     const { subscribe, unsubscribe } = useStrictContext(WsContext, 'useWsSubscription', 'WsContext');
 
     useEffect(() => {

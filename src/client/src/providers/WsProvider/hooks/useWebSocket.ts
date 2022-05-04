@@ -1,19 +1,19 @@
 import { ConnectionState, OnMessage, WsConnection } from '../types';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ServerMsgType } from '../../../../../types';
-import { buildWsMessage, parseWsMessage } from '../../../../../utils';
-import { isServerMessage } from '../../../../../utils/isServerMessage';
+
+import { parseWsMessage, isServerMessage } from '../../../../../utils';
+
 
 const { APP_SETTINGS_PORT } = process.env;
 
 const port = APP_SETTINGS_PORT || window.location.port;
 const wsUrl = `ws://localhost:${port}/ws`;
 
-export const useWebSocket = (onMessage: OnMessage<ServerMsgType>): WsConnection => {
+export const useWebSocket = (onMessage: OnMessage): WsConnection => {
     const socket = useMemo(() => new WebSocket(wsUrl), []);
 
     const [state, setState] = useState<ConnectionState>('process');
-    const messageHandler = useRef<OnMessage<ServerMsgType>>(() => null);
+    const messageHandler = useRef<OnMessage>(() => null);
 
     useEffect(() => {
         messageHandler.current = onMessage;
@@ -49,7 +49,7 @@ export const useWebSocket = (onMessage: OnMessage<ServerMsgType>): WsConnection 
     }, [socket]);
 
     const send = useCallback(([type, body]) => {
-        socket.send(JSON.stringify(buildWsMessage(type, body)));
+        socket.send(JSON.stringify({ type, body }));
     }, []);
 
     return useMemo(() => ({ send, state }), [send, state]);
