@@ -3,7 +3,7 @@ import { Button, JsonInput, MethodSelect } from '../../../../components';
 import { TextInput } from '../../../../components/TextInput';
 import { FetchArgs, fetchRequest } from './fetchRequest';
 import { Func } from '../../../../../../types';
-import { useSettings } from '../../../../providers/SettingsProvider';
+import { useSettings } from '../../../../providers';
 
 interface Props {
     onCancel: Func;

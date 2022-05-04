@@ -16,7 +16,7 @@ export const MocksList: React.FC = () => {
     return (
         <div className="scroll-container">
             <Table headers={[...MockColumns, ...ButtonsConf]}>
-                {mocks.map(mock => (
+                {mocks.map((mock) => (
                     <MockRow
                         data={mock}
                         key={`${mock.path}_${mock.method}`}

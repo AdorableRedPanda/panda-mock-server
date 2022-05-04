@@ -8,6 +8,8 @@ export class SettingsService {
     #store: MemoryStore;
     readonly #mocksPort;
 
+    #settingsSubscribers: Func<MockServerSettings>[] = [];
+
     constructor(store: MemoryStore, mocksPort?: string) {
         this.#store = store;
         this.#mocksPort = mocksPort || MOCKS_PORT || null;
@@ -15,12 +17,14 @@ export class SettingsService {
 
     addSettingsSubscription(cb: Func<MockServerSettings>) {
         this.#filesController.subscribeToFiles((files) => cb(this.#buildState(files)));
+        this.#settingsSubscribers.push(cb);
     }
 
-    mocksUpdate({ type, body }:SettingsMessage) {
+    mocksUpdate({ type, body }: SettingsMessage) {
         switch (type) {
             case 'mocks':
                 this.#store.handleMessage(body);
+                this.getState().then((settings) => this.#settingsSubscribers.forEach((cb) => cb(settings)));
                 break;
             case 'files':
                 this.#filesController.handleMessage(body, this.#store.getList());

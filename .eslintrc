@@ -25,6 +25,7 @@
     "import"
   ],
   "rules": {
+    "arrow-parens": ["warn", "always"],
     "jsx-quotes": ["error", "prefer-double"],
     "prefer-template": "error",
     "object-curly-spacing": ["error", "always"],

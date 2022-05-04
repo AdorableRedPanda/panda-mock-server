@@ -14,7 +14,7 @@ export const useMockState = (): MockFormState => {
     const [state, setState] = useState<ResponseMockDto>(initialState);
 
     const fieldSetter = <K extends keyof ResponseMockDto>(key: K) =>
-        (value: ResponseMockDto[K]) => setState(prev => ({ ...prev, [key]: value }));
+        (value: ResponseMockDto[K]) => setState((prev) => ({ ...prev, [key]: value }));
 
     return [state, fieldSetter];
 };

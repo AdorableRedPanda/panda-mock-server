@@ -37,7 +37,7 @@ export class WsListener {
             });
 
             ws.on('close', () => {
-                this.#connections = this.#connections.filter(connection => connection !== ws);
+                this.#connections = this.#connections.filter((connection) => connection !== ws);
             });
         });
     }

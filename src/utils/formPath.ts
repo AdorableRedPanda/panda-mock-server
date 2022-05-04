@@ -2,6 +2,6 @@ export const formPath = (path: string) => `/${
     path
         .trim()
         .split('/')
-        .filter(segment => segment.length)
+        .filter((segment) => segment.length)
         .join('/')
 }`;

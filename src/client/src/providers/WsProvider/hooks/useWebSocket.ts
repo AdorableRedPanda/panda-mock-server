@@ -48,8 +48,8 @@ export const useWebSocket = (onMessage: OnMessage): WsConnection => {
 
     }, [socket]);
 
-    const send = useCallback(([type, body]) => {
-        socket.send(JSON.stringify({ type, body }));
+    const send = useCallback((msg) => {
+        socket.send(JSON.stringify(msg));
     }, []);
 
     return useMemo(() => ({ send, state }), [send, state]);

@@ -11,7 +11,7 @@ import { buildClientMessage } from '../../../../utils/buildClientMessage';
 
 export const Mocks: React.FC = () => {
     const { send } = useWsConnection();
-    const onSubmit = (mock: ResponseMock) => send(buildClientMessage(['settings', 'mock', 'upsert'], mock));
+    const onSubmit = (mock: ResponseMock) => send(buildClientMessage(['settings', 'mocks', 'upsert'], mock));
 
     const [ref, show, hide] = useDialog();
 
