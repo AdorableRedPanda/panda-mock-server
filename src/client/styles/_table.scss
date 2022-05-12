@@ -11,12 +11,19 @@
 
   .table_row {
     border-bottom: 1px solid var(--dark-main);
+
+    &.simple:hover, &.active {
+      background-color: rgba(0, 0, 10, 3%);
+    }
   }
 
   .cell {
     text-align: left;
     padding: 5px 10px;
     vertical-align: baseline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .table_header {

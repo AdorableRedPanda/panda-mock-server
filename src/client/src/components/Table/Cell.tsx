@@ -17,10 +17,15 @@ export const getValidCellData = (rawValue: unknown): React.ReactElement | string
     return null;
 };
 
-export const TableCell: React.FC = (
-    { children }
+interface Props {
+    colspan?: number;
+}
+
+
+export const Cell: React.FC<Props> = (
+    { children, colspan = 1 }
 ) => (
-    <td className="cell ellipsis">
+    <td colSpan={colspan} className="cell">
         {getValidCellData(children)}
     </td>
 );

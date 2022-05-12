@@ -8,14 +8,16 @@ export const Logs: React.FC = () => {
     const [ref, show, hide] = useDialog();
 
     return (
-        <>
+        <div className="page_layout">
             <PageHeader title="Requests history">
                 <Button onClick={show} text="Test" />
             </PageHeader>
-            <LogsList />
+            <div className="page_content">
+                <LogsList />
+            </div>
             <dialog ref={ref}>
                 <TestForm onCancel={hide} />
             </dialog>
-        </>
+        </div>
     );
 };

@@ -1,6 +1,7 @@
 import { RequestLog } from '../../../../../../types';
-import { HeadersConfig } from '../../../../components';
-import { CellRenderers, renderObject, renderTimestamp } from '../../../cellRenderers';
+import { CellRenderers, HeadersConfig } from '../../../../components';
+import { renderObject, renderTimestamp } from '../../../cellRenderers';
+import { queryPreview } from './queryPreview';
 
 export const RequestColumns: HeadersConfig<RequestLog> = [
     { label: 'Timestamp', width: '5%', key: 'timestamp' },
@@ -11,13 +12,11 @@ export const RequestColumns: HeadersConfig<RequestLog> = [
     { label: 'Response', width: '20%', key: 'response' },
 ];
 
-export const ButtonsConf:HeadersConfig = [{ label: '', width: '5%', key: 'button' }];
-
 export const renderers: CellRenderers<RequestLog> = {
-    method: data => data.method,
-    path: data => data.path,
-    timestamp: data => renderTimestamp(data.timestamp),
-    query: (data) => renderObject(data.query),
-    body: data => renderObject(data.body),
-    response: data => renderObject(data.response),
+    timestamp: (timestamp) => renderTimestamp(timestamp),
+    query: (query) => queryPreview(query),
+    body: (body) => renderObject(body),
+    response: (response) => renderObject(response),
 };
+
+export const keySelector = (row: RequestLog) => row.timestamp.toString();

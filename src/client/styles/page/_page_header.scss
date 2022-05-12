@@ -1,0 +1,11 @@
+.page_header {
+  display: flex;
+  align-items: center;
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+    align-items: center;
+  }
+}

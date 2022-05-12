@@ -1,12 +1,11 @@
 .form {
   width: 40vw;
+}
 
-  .buttons_wrapper {
-    padding-top: 10px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
+.buttons_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .test_form {

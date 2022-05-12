@@ -1,15 +1,9 @@
-import React from 'react';
-import { ObjectView, VariablesComponent } from '../components';
 import { SelectorsMap } from '../../../types/SelectorsMap';
+import { CellRenderer } from '../components';
 
-export const renderObject: CellRenderer<object> = (obj) => <ObjectView obj={obj} />;
+export const renderObject = JSON.stringify;
 
-export const renderVars: CellRenderer<SelectorsMap> = (obj) => <VariablesComponent map={obj} />;
+export const renderVars: CellRenderer<SelectorsMap> = (obj) => Object.keys(obj).join(', ');
 
 export const renderTimestamp: CellRenderer<number> = (timestamp) => (new Date(timestamp)).toLocaleTimeString();
 
-export type CellRenderers<T> ={
-    [key in keyof T]: CellRenderer<T>
-}
-
-type CellRenderer<T> = (raw: T) => React.ReactNode;

@@ -1,18 +1,22 @@
 import React from 'react';
-import { renderers, RequestColumns } from './configs';
 import { RequestLog } from '../../../../../../types';
-import { TableCell, TableRow } from '../../../../components';
+import { CollapsedRowComponent, ObjectView, TextView } from '../../../../components';
+import { queryPreview } from './queryPreview';
 
-interface Props {
-    data: RequestLog;
-}
 
-export const LogRow: React.FC<Props> = ({ data }) => (
-    <TableRow>
-        {RequestColumns.map(({ key }) => (
-            <TableCell key={key} >
-                {renderers[key](data)}
-            </TableCell>
-        ))}
-    </TableRow>
+export const LogRow: CollapsedRowComponent<RequestLog> = (
+    { data: { response, body, timestamp, path, method, query } }
+) => (
+    <div className="margin-0-20">
+        <div className="grid-3">
+            <div>
+                <TextView value={(new Date(timestamp)).toISOString()} label="Timestamp" />
+                <TextView label="Method" value={method} />
+                <TextView label="Path" value={path} />
+                <TextView label="Params" value={`?${queryPreview(query)}`} />
+            </div>
+            <ObjectView value={body} label="Body" />
+            <ObjectView value={response} label="Response" />
+        </div>
+    </div>
 );

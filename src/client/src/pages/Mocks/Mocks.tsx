@@ -18,18 +18,20 @@ export const Mocks: React.FC = () => {
     const [listRef, showFileList, hideFileList] = useDialog();
 
     return (
-        <>
+        <div className="page_layout">
             <PageHeader title="Registered request mocks" >
                 <Button onClick={showForm} text="Add" />
                 <Button onClick={showFileList} text="Files" variant="secondary" />
             </PageHeader>
-            <MocksList />
+            <div className="page_content">
+                <MocksList />
+            </div>
             <dialog ref={formRef} id="mock-form">
                 <MockForm onCancel={hideForm} onSubmit={onSubmit} />
             </dialog>
             <dialog ref={listRef} id="files-list">
                 <FilesForm hideDialog={hideFileList} />
             </dialog>
-        </>
+        </div>
     );
 };

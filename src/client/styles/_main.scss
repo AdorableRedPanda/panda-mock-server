@@ -1,7 +1,7 @@
 html {
   --light-main: #f7f9fc;
 
-  --dark-main: #24292f;
+  --dark-main: #0b1b2a;
 
   --blue-1: #4267B2;
   --blue-2: #263b67;
@@ -13,7 +13,9 @@ html {
 
   --orange: #ffa500;
 
-  --red: #dc1439;
+  --red-1: #DC143CFF;
+  --red-2: #910822;
+  --red-3: #6c051b;
 }
 
 html, body {
@@ -34,10 +36,6 @@ a {
   color: inherit;
 }
 
-dialog {
-  background: var(--light-main);
-}
-
 #root {
   height: 100%;
   display: flex;
@@ -49,10 +47,15 @@ dialog {
   overflow: auto;
 }
 
-.ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.white-space-normal {
+  white-space: normal;
+  &:empty {
+    display: none;
+  }
 }
 
 .flex {

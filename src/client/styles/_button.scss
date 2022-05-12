@@ -5,9 +5,9 @@
   border-radius: 0;
 
   font-weight: bolder;
+  color: var(--light-main);
 
   &.primary {
-    color: var(--light-main);
     background-color: var(--blue-1);
 
     &:hover, &:active {
@@ -25,5 +25,13 @@
     }
   }
 
-  cursor: pointer;
+  &.danger {
+
+    background-color: var(--red-2);
+
+    &:hover, &:active {
+      background-color: var(--red-3);
+    }
+  }
+
 }
