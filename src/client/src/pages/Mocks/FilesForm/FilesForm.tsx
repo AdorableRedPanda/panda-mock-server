@@ -20,9 +20,9 @@ export const FilesForm: React.FC<Props> = ({ hideDialog }) => {
 
     return (
         <div className="files-dialog form">
-            <div className="files">
+            <ul className="files_list">
                 {files.map((file) => <FileComponent filename={file} activateCb={activateFile} removeCb={removeFile} key={file} />)}
-            </div>
+            </ul>
             <SaveForm saveMocksState={saveFile} />
             <div className="buttons_wrapper">
                 <Button onClick={hideDialog} text="Close" variant="secondary"/>

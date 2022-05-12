@@ -2,7 +2,7 @@
   height: fit-content;
   padding: 5px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 0;
 
   font-weight: bolder;
 
@@ -17,11 +17,11 @@
 
   &.secondary {
     color: var(--dark-main);
-    border: 1px solid var(--dark-main);
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0%);
+    border: 1px solid rgba(0, 0, 0, 15%);
 
     &:hover, &:active {
-      background-color: var(--grey-2);
+      background-color: rgba(0, 0, 0, 5%);
     }
   }
 

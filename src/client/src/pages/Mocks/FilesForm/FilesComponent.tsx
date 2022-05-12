@@ -12,12 +12,12 @@ export const FileComponent: React.FC<Props> = ({ filename, removeCb, activateCb 
     const onRemove = () => removeCb(filename);
     const onActivate = () => activateCb(filename);
     return (
-        <div className="file">
+        <li className="file">
             <span>{filename}</span>
             <div className="flex gap-10">
                 <Button onClick={onRemove} variant="secondary" text="Remove"/>
                 <Button onClick={onActivate} text="Activate"/>
             </div>
-        </div>
+        </li>
     );
 };

@@ -1,14 +1,19 @@
 .files-dialog {
   min-width: 700px;
+  display: flex;
+  flex-direction: column;
 
-  .files {
-    width: 100%;
+  .files_list {
+    padding: 0;
 
     .file {
       display: flex;
-      margin: 5px;
+      padding: 5px 5px 5px 10px;
       justify-content: space-between;
-      border-radius: 5px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 5%);
+      }
     }
   }
 

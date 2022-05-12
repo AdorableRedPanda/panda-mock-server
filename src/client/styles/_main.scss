@@ -34,6 +34,10 @@ a {
   color: inherit;
 }
 
+dialog {
+  background: var(--light-main);
+}
+
 #root {
   height: 100%;
   display: flex;
