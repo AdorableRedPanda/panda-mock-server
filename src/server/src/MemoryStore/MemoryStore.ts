@@ -13,6 +13,10 @@ export class MemoryStore implements MessageHandler<MockMessage> {
         return this.#mocks.find((mock) => isMatch(mock, req));
     }
 
+    #setList(next: ResponseMock[]) {
+        this.#mocks = next;
+    }
+
     handleMessage({ type, body }: MockMessage) {
         switch (type) {
             case 'delete':
@@ -20,6 +24,9 @@ export class MemoryStore implements MessageHandler<MockMessage> {
                 break;
             case 'upsert':
                 this.#upsertMock(buildMock(body));
+                break;
+            case '#set_list':
+                this.#setList(body);
                 break;
         }
     }

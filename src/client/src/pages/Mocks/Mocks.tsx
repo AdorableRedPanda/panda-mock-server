@@ -7,22 +7,28 @@ import { Button } from '../../components';
 import { useDialog } from '../useDialog';
 import { useWsConnection } from '../../providers';
 import { buildClientMessage } from '../../../../utils/buildClientMessage';
+import { FilesForm } from './FilesForm';
 
 
 export const Mocks: React.FC = () => {
     const { send } = useWsConnection();
     const onSubmit = (mock: ResponseMock) => send(buildClientMessage(['settings', 'mocks', 'upsert'], mock));
 
-    const [ref, show, hide] = useDialog();
+    const [formRef, showForm, hideForm] = useDialog();
+    const [listRef, showFileList, hideFileList] = useDialog();
 
     return (
         <>
             <PageHeader title="Registered request mocks" >
-                <Button onClick={show} text="Add" />
+                <Button onClick={showForm} text="Add" />
+                <Button onClick={showFileList} text="Files" variant="secondary" />
             </PageHeader>
             <MocksList />
-            <dialog ref={ref} id="form">
-                <MockForm onCancel={hide} onSubmit={onSubmit} />
+            <dialog ref={formRef} id="mock-form">
+                <MockForm onCancel={hideForm} onSubmit={onSubmit} />
+            </dialog>
+            <dialog ref={listRef} id="files-list">
+                <FilesForm hideDialog={hideFileList} />
             </dialog>
         </>
     );

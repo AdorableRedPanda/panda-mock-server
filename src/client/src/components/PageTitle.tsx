@@ -9,6 +9,8 @@ export const PageHeader: React.FC<Props> = ({ title, children }) => (
         <div className="title">
             <h2>{title}</h2>
         </div>
-        {children}
+        <div className="flex gap-10">
+            {children}
+        </div>
     </div>
 );

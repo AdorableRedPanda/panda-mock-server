@@ -28,6 +28,14 @@ export class SettingsService {
                 break;
             case 'files':
                 this.#filesController.handleMessage(body, this.#store.getList());
+                break;
+            // todo: refactor services to avoid this intersection
+            case 'mocks_from_file':
+                this.#filesController
+                    .getFile(body)
+                    .then((list) => this.#store.handleMessage({ type: '#set_list', body: list }))
+                    .then(() => this.getState().then((settings) => this.#settingsSubscribers.forEach((cb) => cb(settings))))
+                    .then(() => console.log('mocks list updated'));
         }
     }
 

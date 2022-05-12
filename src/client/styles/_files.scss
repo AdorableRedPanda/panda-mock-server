@@ -1,0 +1,19 @@
+.files-dialog {
+  min-width: 700px;
+
+  .files {
+    width: 100%;
+
+    .file {
+      display: flex;
+      margin: 5px;
+      justify-content: space-between;
+      border-radius: 5px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

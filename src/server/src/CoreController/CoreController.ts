@@ -24,7 +24,6 @@ export class CoreController implements MessageHandler<ClientMessage> {
             case 'health_check':
                 console.log('health_check');
                 break;
-
         }
 
     }

@@ -33,3 +33,11 @@
     }
   }
 }
+
+.form {
+  .save_mocks {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+  }
+}
