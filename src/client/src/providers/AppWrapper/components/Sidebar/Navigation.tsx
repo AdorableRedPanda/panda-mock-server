@@ -5,7 +5,7 @@ import { AppRoutes } from '../../../../constants';
 
 export const Navigation: React.FC = () => (
     <nav className="navigation">
-        <NavLink to={AppRoutes.Logs}>Logs</NavLink>
-        <NavLink to={AppRoutes.Mocks}>Mocks</NavLink>
+        <NavLink className="nav_item" to={AppRoutes.Logs}>Logs</NavLink>
+        <NavLink className="nav_item" to={AppRoutes.Mocks}>Mocks</NavLink>
     </nav>
 );

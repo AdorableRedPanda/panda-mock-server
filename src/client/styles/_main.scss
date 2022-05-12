@@ -1,10 +1,15 @@
 html {
-  --light-main: #fefdff;
+  --light-main: #f7f9fc;
 
   --dark-main: #24292f;
 
   --blue-1: #4267B2;
   --blue-2: #263b67;
+  --blue-3: #233044FF;
+  --blue-4: #202c3f;
+
+  --green-1: #33dc3b;
+  --green-2: #388e3c;
 
   --orange: #ffa500;
 
@@ -23,6 +28,10 @@ html, body {
 
 h1, h2, h3, h4, h5, h6, ul, li {
   margin: 0;
+}
+
+a {
+  color: inherit;
 }
 
 #root {
