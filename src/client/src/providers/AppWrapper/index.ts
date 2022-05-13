@@ -1,1 +1,1 @@
-export { AppRouting } from './AppRouting';
+export { AppWrapper } from './AppWrapper';

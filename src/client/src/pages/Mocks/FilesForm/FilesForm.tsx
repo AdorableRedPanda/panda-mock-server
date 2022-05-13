@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSettings, useWsConnection } from '../../../providers';
 import { buildClientMessage } from '../../../../../utils/buildClientMessage';
-import { FileComponent } from './FilesComponent';
+import { FileComponent } from './FileComponent';
 import { Func } from '../../../../../types';
 import { Button } from '../../../components';
 import { SaveForm } from './SaveForm';

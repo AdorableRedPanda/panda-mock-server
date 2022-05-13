@@ -1,5 +1,6 @@
 .form {
   width: 40vw;
+  padding: 0;
 }
 
 .buttons_wrapper {
@@ -16,7 +17,6 @@
 }
 
 .mock_form {
-  height: 400px;
 
   .text-inputs {
     display: grid;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRouting, WsProvider, LogsStore, SettingsProvider } from './providers';
+import { AppWrapper, WsProvider, LogsStore, SettingsProvider } from './providers';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AppRoutes } from './constants';
 import { Mocks, Logs } from './pages';
@@ -9,10 +9,10 @@ export const App:React.FC = () => (
         <LogsStore>
             <SettingsProvider>
                 <BrowserRouter>
-                    <AppRouting>
+                    <AppWrapper>
                         <Route path={AppRoutes.Logs} element={<Logs />} />
                         <Route path={AppRoutes.Mocks} element={<Mocks />} />
-                    </AppRouting>
+                    </AppWrapper>
                 </BrowserRouter>
             </SettingsProvider>
         </LogsStore>

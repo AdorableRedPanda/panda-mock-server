@@ -16,7 +16,7 @@ export const FileComponent: React.FC<Props> = ({ filename, removeCb, activateCb 
             <span>{filename}</span>
             <div className="flex gap-10">
                 <Button onClick={onRemove} variant="danger" text="Remove" />
-                <Button onClick={onActivate} text="Activate"/>
+                <Button onClick={onActivate} text="Load"/>
             </div>
         </li>
     );
