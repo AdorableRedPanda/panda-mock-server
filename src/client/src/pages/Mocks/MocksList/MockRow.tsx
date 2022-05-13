@@ -1,10 +1,8 @@
 import { ResponseMock } from '../../../../../types';
 import React from 'react';
-import { Button, CollapsedRowComponent, ObjectView, TextView } from '../../../components';
+import { Button, CollapsedRowComponent, ObjectView, TextView, VariablesView } from '../../../components';
 import { useWsConnection } from '../../../providers';
 import { buildClientMessage } from '../../../../../utils/buildClientMessage';
-
-
 
 export const MockRow: CollapsedRowComponent<ResponseMock> = (
     { data: {
@@ -27,7 +25,7 @@ export const MockRow: CollapsedRowComponent<ResponseMock> = (
                     label="Template"
                     value={template}
                 />
-                <ObjectView
+                <VariablesView
                     label="Variables"
                     value={selectorsMap}
                 />
