@@ -11,7 +11,7 @@ export class LoggingService {
     onRequest([req, response]: [RequestInternal, ResponseInternal]): void {
         const log = { ...req, response };
         this.#logs.push(log);
-        this.#subscribers.forEach(cb => cb(log));
+        this.#subscribers.forEach((cb) => cb(log));
     }
 
     subscribe(cb: Func<RequestLog>): void {

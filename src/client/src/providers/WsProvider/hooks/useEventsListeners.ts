@@ -11,12 +11,12 @@ export const useEventsListeners = () : ListenersHook => {
     );
     const unsubscribe: ListenerHandler<ServerMsgType> = useCallback(
         ([type, cb]) => setHandlers(
-            (prev) => ({ ...prev, [type]: prev[type].filter(item => item !== cb) })
+            (prev) => ({ ...prev, [type]: prev[type].filter((item) => item !== cb) })
         ), [setHandlers]
     );
 
     const onMessage: OnMessage = useCallback(([type, body]) => {
-        handlers[type].forEach(cb => cb(body));
+        handlers[type].forEach((cb) => cb(body));
     }, [handlers]);
 
     return { onMessage, subscribe, unsubscribe };
