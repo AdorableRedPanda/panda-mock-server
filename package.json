@@ -8,7 +8,8 @@
     "build:client": "webpack -c webpack/client.build.js",
     "build:server": "webpack -c webpack/server.build.js",
     "dev:client": "webpack serve -c webpack/client.dev.js",
-    "dev:server": "webpack -c webpack/server.dev.js"
+    "dev:server": "webpack -c webpack/server.dev.js",
+    "test": "jest --config jest.config.json"
   },
   "repository": {
     "type": "git",
@@ -49,9 +50,12 @@
     "utf-8-validate": "5.0.9",
     "webpack": "5.70.0",
     "webpack-cli": "4.9.2",
-    "ws": "8.5.0"
+    "ws": "8.5.0",
+    "jest": "28.1.0",
+    "ts-jest": "28.0.2"
   },
   "devDependencies": {
+    "@types/jest": "27.5.1",
     "@babel/preset-react": "7.16.7",
     "@babel/preset-typescript": "7.16.7",
     "@types/cors": "2.8.12",

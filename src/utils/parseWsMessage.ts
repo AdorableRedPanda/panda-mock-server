@@ -1,11 +1,10 @@
 import { WsMessage } from '../types';
 
-export const parseWsMessage = (str: string): WsMessage => {
+export const parseWsMessage = (str: string) => {
     const parsed = JSON.parse(str);
-    const { type, body = null } = parsed;
-    if (!type || body === undefined) {
-        throw 'invalid ws message type';
+    if (!parsed.hasOwnProperty('type') || !parsed.hasOwnProperty('body')) {
+        throw new Error('invalid ws message type');
     }
 
-    return parsed;
+    return parsed as WsMessage;
 };

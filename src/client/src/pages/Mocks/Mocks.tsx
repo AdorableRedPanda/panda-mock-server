@@ -19,7 +19,7 @@ export const Mocks: React.FC = () => {
 
     return (
         <div className="page_layout">
-            <PageHeader title="Registered request mocks" >
+            <PageHeader title="Registered mocks" >
                 <Button onClick={showForm} text="Add" />
                 <Button onClick={showFileList} text="Files" variant="secondary" />
             </PageHeader>
