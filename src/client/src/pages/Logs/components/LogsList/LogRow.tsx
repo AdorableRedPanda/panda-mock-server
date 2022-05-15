@@ -13,7 +13,7 @@ export const LogRow: CollapsedRowComponent<RequestLog> = (
                 <TextView value={(new Date(timestamp)).toISOString()} label="Timestamp" />
                 <TextView label="Method" value={method} />
                 <TextView label="Path" value={path} />
-                <TextView label="Params" value={`?${queryPreview(query)}`} />
+                <TextView label="Params" value={queryPreview(query)} />
             </div>
             <ObjectView value={body} label="Body" />
             <ObjectView value={response} label="Response" />

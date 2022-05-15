@@ -4,7 +4,7 @@
   border: none;
 
   font-weight: bolder;
-  color: var(--light-main);
+  color: var(--main-light);
 
   &.primary {
     background-color: var(--blue-1);
@@ -15,7 +15,7 @@
   }
 
   &.secondary {
-    color: var(--dark-main);
+    color: var(--main-dark);
     background-color: rgba(0, 0, 0, 0%);
     border: 1px solid rgba(0, 0, 0, 15%);
 

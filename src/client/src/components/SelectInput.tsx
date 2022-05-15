@@ -7,7 +7,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({ value, onChange, label
     return (
         <InputWrapper name={name} label={label}>
             <select className="input" onChange={onEvent} value={value}>
-                {options.map(op => <option key={op} value={op}>{op}</option>)}
+                {options.map((op) => <option key={op} value={op}>{op}</option>)}
             </select>
         </InputWrapper>
     );

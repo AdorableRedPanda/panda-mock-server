@@ -31,7 +31,6 @@ export const MockForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
         }
     };
 
-
     return (
         <form className="form mock_form">
             <div className="text-inputs">

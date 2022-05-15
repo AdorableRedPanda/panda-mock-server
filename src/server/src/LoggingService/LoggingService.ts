@@ -5,7 +5,7 @@ export class LoggingService {
     #subscribers: Func<RequestLog>[] = [];
 
     getHistory(): RequestLog[] {
-        return this.#logs;
+        return this.#logs.sort((a, b) => a.timestamp > b.timestamp ? -1 : 1);
     }
 
     onRequest([req, response]: [RequestInternal, ResponseInternal]): void {

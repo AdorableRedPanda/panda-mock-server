@@ -19,7 +19,7 @@ export const TestForm: React.FC<Props> = ({ onCancel }) => {
     );
     
     const onSubmit = () => port && fetchRequest(port, args);
-    const placeholder = `http://localhost:${port}/...`;
+    const placeholder = `http://localhost:${port}...`;
 
     return (
         <form className="form test_form">

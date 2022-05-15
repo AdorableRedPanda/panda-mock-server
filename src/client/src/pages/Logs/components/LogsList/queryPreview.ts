@@ -8,9 +8,14 @@ const stringifyValue = (value: unknown) => {
     return JSON.stringify(value);
 };
 
-export const queryPreview = (value: ParsedQs) => (
-    Object
-        .entries(value)
+export const queryPreview = (value: ParsedQs) => {
+    const entries = Object.entries(value);
+
+    if (!entries.length) {
+        return '';
+    }
+
+    return entries
         .map(([key, value]) => `${key}=${stringifyValue(value)}`)
-        .join('&')
-);
+        .join('&');
+};

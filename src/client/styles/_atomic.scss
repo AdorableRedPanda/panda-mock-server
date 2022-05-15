@@ -1,0 +1,23 @@
+.overflow-auto {
+  overflow: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.word-break-break-all {
+  word-break: break-all;
+}
+
+.white-space-break-spaces {
+  white-space: break-spaces;
+}
+
+.flex {
+  display: flex;
+
+  &.gap-10 {
+    gap: 10px;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputWrapper } from './InputWrapper';
+import { TextView } from './TextView';
 
 interface Props {
     label: string;
@@ -7,7 +7,5 @@ interface Props {
 }
 
 export const ObjectView: React.FC<Props> = ({ value, label }) => (
-    <InputWrapper name={label} label={label}>
-        <pre className="input overflow-auto margin-0">{JSON.stringify(value, null, 2)}</pre>
-    </InputWrapper>
+    <TextView label={label} value={JSON.stringify(value, null, 4)}/>
 );

@@ -1,31 +1,11 @@
-html {
-  --light-main: #f7f9fc;
-
-  --dark-main: #0b1b2a;
-
-  --blue-1: #4267B2;
-  --blue-2: #263b67;
-  --blue-3: #233044FF;
-  --blue-4: #1c293b;
-
-  --green-1: #33dc3b;
-  --green-2: #388e3c;
-
-  --orange: #ffa500;
-
-  --red-1: #DC143CFF;
-  --red-2: #910822;
-  --red-3: #6c051b;
-}
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-style: normal;
   font-family: 'Nunito', sans-serif;
-  color: var(--dark-main);
-  background: var(--light-main);
+  color: var(--main-dark);
+  background: var(--main-light);
 }
 
 h1, h2, h3, h4, h5, h6, ul, li {
@@ -41,27 +21,4 @@ a {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-.overflow-auto {
-  overflow: auto;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.white-space-normal {
-  white-space: normal;
-  &:empty {
-    display: none;
-  }
-}
-
-.flex {
-  display: flex;
-
-  &.gap-10 {
-    gap: 10px;
-  }
 }

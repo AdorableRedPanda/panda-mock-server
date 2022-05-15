@@ -4,30 +4,29 @@
   margin: 5px;
   position: relative;
 
-
   .input {
-    background-color: var(--light-main);
+    background-color: var(--main-light);
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--dark-main);
+    border: 1px solid var(--main-dark);
     box-sizing: border-box;
+    line-height: 17px;
+    font-size: 15px;
+    min-height: 39px;
   }
 
   .label {
     transform: translate(0, -50%);
     position: absolute;
     left: 15px;
-    background: var(--light-main);
+    background: var(--main-light);
     padding: 0 3px;
     margin: 0 3px;
+    line-height: 13px;
   }
 }
 
 textarea {
   resize: vertical;
   height: 100%;
-}
-
-pre {
-  min-height: 37px;
 }

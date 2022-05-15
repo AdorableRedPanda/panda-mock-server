@@ -1,4 +1,5 @@
 import { Method } from '../../../../../../types';
+import { formPath } from '../../../../../../utils';
 
 export interface FetchArgs {
     url: string;
@@ -16,5 +17,5 @@ export const fetchRequest = (port: string, { url, method, body }: FetchArgs) => 
         init.body = JSON.stringify(body);
     }
 
-    return fetch(`http://localhost:${port}/${url}`, init);
+    return fetch(`http://localhost:${port}${formPath(url)}`, init);
 };

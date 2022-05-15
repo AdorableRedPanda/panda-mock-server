@@ -1,7 +1,7 @@
 import React from 'react';
-import { InputWrapper } from './InputWrapper';
 import { SelectorsMap } from '../../../types/SelectorsMap';
 import { Path } from 'red-panda-utils';
+import { TextView } from './TextView';
 
 interface Props {
     label: string;
@@ -10,15 +10,11 @@ interface Props {
 
 const stringifyVar = (name: string, path: Path) => `${name}: [${path.join(', ')}]`;
 
-export const VariablesView: React.FC<Props> = ({ value, label }) => (
-    <InputWrapper name={label} label={label}>
-        <pre className="input overflow-auto margin-0">
-            {
-                Object
-                    .entries(value)
-                    .map(([key, path]) => stringifyVar(key, path))
-                    .join('\n')
-            }
-        </pre>
-    </InputWrapper>
-);
+export const VariablesView: React.FC<Props> = ({ value, label }) => {
+    const vars = Object
+        .entries(value)
+        .map(([key, path]) => stringifyVar(key, path))
+        .join('\n');
+
+    return <TextView label={label} value={vars}/>;
+};
