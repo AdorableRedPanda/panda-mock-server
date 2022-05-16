@@ -13,5 +13,5 @@ export const startStaticServer = (settingsPort?: string): http.Server => {
         res.sendFile(path.join(__dirname, '/client/index.html'));
     });
 
-    return app.listen(port, () => console.log(`settings server is listening port ${port}`));
+    return app.listen(port, () => console.log(`Configuration: http://localhost:${port}/`));
 };
