@@ -7,23 +7,16 @@ const MocksDirectoryName = 'mocks_collection';
 export class FilesController implements MessageHandler<FileMessage> {
     #filesSubscriptions: Func<string[]>[] = [];
 
-    constructor() {
-        if (!fs.existsSync(MocksDirectoryName)) {
-            const directory = fs.mkdirSync(MocksDirectoryName, { recursive: true });
-            console.log(`directory created: ${directory}`);
-        }
-    }
-
     #emitFilesUpdate() {
         this.getFilesList().then((files) => this.#filesSubscriptions.forEach((cb) => cb(files)));
     }
 
     #createFile(name: string, data: unknown) {
+        this.#createCollectionDirrectory();
         fs.writeFile(`${MocksDirectoryName}/${name}.json`, data, (err: NodeJS.ErrnoException | null) => {
             if(err) {
                 return console.log(`cannot create file ${err}`);
             }
-
             this.#emitFilesUpdate();
         });
 
@@ -39,12 +32,19 @@ export class FilesController implements MessageHandler<FileMessage> {
         });
     }
 
+    #createCollectionDirrectory() {
+        if (!fs.existsSync(MocksDirectoryName)) {
+            const directory = fs.mkdirSync(MocksDirectoryName, { recursive: true });
+            console.log(`directory created: ${directory}`);
+        }
+    }
+
     getFilesList(): Promise<string[]> {
         return new Promise((resolve) => {
             fs.readdir(MocksDirectoryName, (err: NodeJS.ErrnoException | null, files: string[]) => {
                 if (err) {
                     console.log(`Unable to scan directory: ${err}`);
-                    return;
+                    resolve ([]);
                 }
 
                 resolve(files);
