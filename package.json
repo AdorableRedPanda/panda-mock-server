@@ -1,6 +1,6 @@
 {
   "name": "panda-mock-server",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "simple app to mock requests",
   "main": "./bin/index.js",
   "scripts": {
