@@ -1,5 +1,5 @@
 # panda-mock-server
-Main purpose of this pet-project was to make simple mock server with UI configuration,
+Main purposes of this pet-project was to make simple mock server with UI configuration,
 to work with Express and Node. But it can be used in development if:
 - you have contracts but not working api
 - want to test your app and don't want to make all steps to reproduce api-response
