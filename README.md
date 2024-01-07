@@ -133,12 +133,3 @@ To start server and client in development mode or make some fixes
 ```console
   npm run dev:server
 ```
-
-## Next steps
-- ui - more convenient way to set templates and variables
-- ui - add notifications on settings changes and errors
-- ui - avoid using dialogs for forms
-- ui - avoid using React
-- ui - refactor file structure 
-- server - refactor services to simplify dependency graph
-- server - start http listener from settings
